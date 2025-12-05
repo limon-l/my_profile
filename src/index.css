@@ -1,0 +1,562 @@
+:root {
+    --max-width: 1200px;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+/* Ensure any element using `container` is constrained to 1200px and centered */
+.container {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* keep the custom scrollbar style from the original */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #38bdf8;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0ea5e9;
+}
+
+/* modal base */
+.modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* quick utility for max content width */
+.max-w-4xl {
+    max-width: 64rem;
+}
+
+/* =========================== ANIMATIONS =========================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-slideDown {
+    animation: slideDown 0.4s ease-out;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.6s ease-out;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.3s ease-out;
+}
+
+.delay-1000 {
+    animation-delay: 1s;
+}
+
+/* ==================== PREMIUM ANIMATIONS ==================== */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 3s infinite;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(56, 189, 248, 0.2),
+            transparent);
+    background-size: 1000px 100%;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+}
+
+.animate-gradient-shift {
+    animation: gradient-shift 6s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* ======= Section title underline animation (left -> right) ======= */
+.section-title {
+    display: block;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0.25rem;
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg, #38bdf8, #60a5fa);
+    border-radius: 4px;
+    transition: width 0.7s cubic-bezier(.2, .9, .2, 1);
+}
+
+.section-title.animate-slideUp::after,
+.section-title:hover::after {
+    width: 100%;
+}
+
+/* ======= CTA button base styling for readability in dark theme ======= */
+.cta-button {
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* ======= Smooth Scrolling & Global ======= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.03), transparent 15%), radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.02), transparent 18%);
+}
+
+/* ======= Rectriangle (animated triangular rectangle) ======= */
+.rectriangle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    transform-origin: center;
+    filter: drop-shadow(0 10px 30px rgba(2, 6, 23, 0.6));
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    animation: rectriangle-move 8s ease-in-out infinite;
+}
+
+@keyframes rectriangle-move {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.95;
+    }
+
+    25% {
+        transform: translate(-20px, -30px) rotate(20deg) scale(1.05);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translate(40px, -10px) rotate(60deg) scale(0.95);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translate(20px, 30px) rotate(120deg) scale(1.02);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(180deg) scale(1);
+        opacity: 0.95;
+    }
+}
+
+/* ======= 3D Carousel ======= */
+.carousel {
+    width: 100%;
+    height: 280px;
+    perspective: 1200px;
+    position: relative;
+}
+
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    transition: transform 1s cubic-bezier(.2, .8, .2, 1);
+}
+
+.carousel-slide {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    width: 240px;
+    height: 160px;
+    margin-left: -120px;
+    margin-top: -80px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease, opacity 0.6s ease;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.carousel-slide .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(2, 6, 23, 0.6));
+}
+
+/* arrange slides by --i variable in inline style from JS */
+.carousel-slide[data-index] {
+    opacity: 0.95;
+}
+
+/* ======= Tech slide styling for tech icon carousel ======= */
+.carousel-slide.tech-slide {
+    background-size: auto;
+    background-image: none;
+}
+
+.carousel-slide.tech-slide i {
+    filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.25));
+}
+
+/* ======= ADVANCED 3D CIRCULAR CAROUSEL SYSTEM ======= */
+/* ======= COMPACT 3D CIRCULAR CAROUSEL (centered below image) ======= */
+.carousel-compact-container {
+    perspective: 1000px;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-compact-ring {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.22, 0.9, 0.32, 1);
+    will-change: transform;
+}
+
+.carousel-compact-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    opacity: 1;
+    visibility: visible;
+}
+
+.icon-badge {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(14, 165, 233, 0.08));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    backdrop-filter: blur(8px);
+    transform-style: preserve-3d;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity, box-shadow;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+}
+
+.icon-badge.center {
+    box-shadow:
+        0 0 28px rgba(56, 189, 248, 0.5),
+        0 0 56px rgba(14, 165, 233, 0.25),
+        inset 0 1px 4px rgba(255, 255, 255, 0.1);
+    border-color: rgba(56, 189, 248, 0.5);
+    scale: 1.15;
+}
+
+.icon-content-compact {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.icon-badge.center .icon-content-compact {
+    filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.6));
+    text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+}
+
+/* Mobile responsiveness for compact carousel */
+@media (max-width: 768px) {
+    .carousel-compact-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .carousel-compact-ring {
+        width: 240px;
+        height: 240px;
+    }
+
+    .icon-badge {
+        width: 56px;
+        height: 56px;
+    }
+
+    .icon-content-compact {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .carousel-compact-ring {
+        width: 200px;
+        height: 200px;
+    }
+
+    .icon-badge {
+        width: 48px;
+        height: 48px;
+    }
+
+    .icon-content-compact {
+        font-size: 1.5rem;
+    }
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #7dd3fc, #0ea5e9);
+    opacity: 0.9;
+    mix-blend-mode: screen;
+    animation: sparkle-float 6s linear infinite;
+}
+
+@keyframes sparkle-float {
+    0% {
+        transform: translateY(0) scale(0.9);
+        opacity: 0.9
+    }
+
+    50% {
+        transform: translateY(-40px) scale(1.2);
+        opacity: 0.6
+    }
+
+    100% {
+        transform: translateY(0) scale(0.9);
+        opacity: 0.9
+    }
+}
+
+/* ======= Skill icon sizing and neon accent ======= */
+.skill-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    color: var(--accent, #38bdf8);
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+/* ======= Extra fancy glows for headings/buttons ======= */
+.fancy-glow {
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(14, 165, 233, 0.06));
+    border-radius: 12px;
+    padding: .25rem .5rem;
+    display: inline-block;
+    animation: gradient-shift 6s ease infinite;
+}
+
+/* small responsive tweaks for carousel on mobile */
+@media (max-width: 640px) {
+    .carousel {
+        height: 220px
+    }
+
+    .carousel-slide {
+        width: 200px;
+        height: 120px;
+        margin-left: -100px;
+        margin-top: -60px
+    }
+}
