@@ -182,6 +182,86 @@ export default function App() {
     { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
   ];
 
+  const getProficiencyLabel = (level) => {
+    if (level >= 90) return "Expert";
+    if (level >= 80) return "Advanced";
+    if (level >= 70) return "Proficient";
+    return "Intermediate";
+  };
+
+  // Speedometer Skill Component
+  function SkillSpeedometer({ skill }) {
+    const radius = 45;
+    const circumference = 2 * Math.PI * radius;
+    const strokeDashoffset =
+      circumference - (skill.level / 100) * circumference;
+
+    return (
+      <div className="flex flex-col items-center group cursor-pointer">
+        <div className="relative w-28 h-28 flex-shrink-0">
+          <svg
+            className="w-full h-full transform -rotate-90"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg">
+            {/* Background circle */}
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="rgba(56, 189, 248, 0.15)"
+              strokeWidth="4"
+            />
+            {/* Progress circle */}
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="url(#skillGradient)"
+              strokeWidth="5"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+              className="skill-speedometer-circle"
+              style={{
+                transition:
+                  "stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              }}
+            />
+            <defs>
+              <linearGradient
+                id="skillGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" />
+                <stop offset="100%" stopColor="#60a5fa" />
+              </linearGradient>
+            </defs>
+          </svg>
+          {/* Center icon - shown by default */}
+          <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+            <i className={`${skill.icon} text-4xl text-accent`} aria-hidden></i>
+          </div>
+          {/* Center info - hidden by default, shown on hover */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-xs font-bold text-accent text-center px-2 leading-tight">
+              {skill.name}
+            </span>
+            <p className="text-sm font-semibold text-accent mt-1">
+              {skill.level}%
+            </p>
+            <p className="text-xs text-accent/70">
+              {getProficiencyLabel(skill.level)}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Compact 3D Carousel for icons at hero border
   function CarouselCompact({
     items = [],
@@ -231,12 +311,87 @@ export default function App() {
     );
   }
 
+  // Rounded Auto-Carousel Component
+  function RoundedCarousel({ items = [], interval = 1500 }) {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const trackRef = React.useRef(null);
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % items.length);
+      }, interval);
+      return () => clearInterval(timer);
+    }, [items.length, interval]);
+
+    useEffect(() => {
+      // Scroll the track to show the active pill
+      if (trackRef.current) {
+        const track = trackRef.current;
+        const pills = track.querySelectorAll(".carousel-pill");
+
+        if (pills[activeIndex]) {
+          const activePill = pills[activeIndex];
+          const trackRect = track.getBoundingClientRect();
+          const pillRect = activePill.getBoundingClientRect();
+
+          // Calculate scroll position to center the active pill
+          const scrollLeft =
+            activePill.offsetLeft -
+            track.clientWidth / 2 +
+            activePill.clientWidth / 2;
+
+          track.scrollTo({
+            left: scrollLeft,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, [activeIndex]);
+
+    return (
+      <div className="rounded-carousel-wrapper">
+        <div className="rounded-carousel-track" ref={trackRef}>
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className={`carousel-pill ${idx === activeIndex ? "active" : ""}`}
+              onClick={() => setActiveIndex(idx)}>
+              <i className={`${item.icon}`} style={{ color: item.color }}></i>
+              <span className="pill-label">{item.name}</span>
+            </div>
+          ))}
+        </div>
+        <div className="carousel-indicators">
+          {items.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={`indicator-dot ${idx === activeIndex ? "active" : ""}`}
+              aria-label={`Go to item ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="aurora aurora-1"></div>
+        <div className="aurora aurora-2"></div>
+        <div className="grid-overlay"></div>
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="particle-field">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} className="particle"></span>
+          ))}
+        </div>
+        <span className="meteor meteor-1"></span>
+        <span className="meteor meteor-2"></span>
+        <span className="meteor meteor-3"></span>
       </div>
 
       {/* Navigation */}
@@ -392,18 +547,16 @@ export default function App() {
 
                 {/* Image Container */}
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-visible border-2 border-accent/30 shadow-2xl relative z-10 bg-gradient-to-br from-accent/10 to-transparent p-0">
+                  <div className="orbit-ring"></div>
+                  <div className="orbit-dot orbit-dot-1"></div>
+                  <div className="orbit-dot orbit-dot-2"></div>
                   <img
                     src="/hero.jpeg"
                     alt="hero profile"
                     className="w-full h-full object-cover rounded-3xl relative z-20"
                   />
                   <div className="absolute bottom-0 left-0 w-full translate-y-1/2 flex justify-center z-30 pointer-events-auto">
-                    <CarouselCompact
-                      items={techIcons}
-                      radius={120}
-                      autoRotate={true}
-                      interval={1500}
-                    />
+                    <RoundedCarousel items={techIcons} interval={1800} />
                   </div>
                 </div>
               </div>
@@ -430,6 +583,30 @@ export default function App() {
                     building scalable, user-focused applications with clean
                     architecture and optimized performance.
                   </p>
+                </div>
+
+                <div className="p-6 bg-primary/40 border border-accent/20 rounded-xl backdrop-blur-sm objective-card">
+                  <h3 className="text-xl font-bold text-accent mb-3">
+                    <i className="fas fa-bullseye mr-2"></i>Professional
+                    Objectives
+                  </h3>
+                  <ul className="space-y-3 text-textGray">
+                    <li className="flex items-start gap-3">
+                      <span className="objective-dot"></span>
+                      Deliver accessible, performance-optimized web experiences
+                      with clean, scalable architectures.
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="objective-dot"></span>
+                      Collaborate in cross-functional teams to ship reliable
+                      features and measurable business outcomes.
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="objective-dot"></span>
+                      Continuously learn and implement modern frontend
+                      engineering practices and tooling.
+                    </li>
+                  </ul>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
@@ -503,98 +680,115 @@ export default function App() {
         {/* Skills Section */}
         <section id="skills" className="py-20">
           <div className="container">
-            <h2 className="section-title text-4xl font-bold text-center mb-16 animate-slideUp">
+            <h2 className="section-title text-4xl font-bold text-center mb-6 animate-slideUp">
               <span className="border-b-4 border-accent pb-2">
                 Technical Skills
               </span>
             </h2>
+            <p className="text-center text-textGray max-w-3xl mx-auto mb-12">
+              A balanced skill set across frontend, backend, and production
+              tooling, with emphasis on performance, accessibility, and clean
+              architecture.
+            </p>
 
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Frontend Skills */}
-              <div className="space-y-6 animate-slideInLeft">
-                <h3 className="text-2xl font-bold flex items-center gap-3 text-accent">
-                  <i className="fas fa-code text-3xl"></i>Frontend
-                </h3>
-                <div className="space-y-4">
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="p-6 bg-primary/40 border border-accent/20 rounded-2xl backdrop-blur-sm hover:border-accent/40 transition-all animate-slideInLeft">
+                <div className="flex items-center gap-3 mb-6">
+                  <i className="fas fa-code text-3xl text-accent"></i>
+                  <div>
+                    <h3 className="text-xl font-bold">Frontend Engineering</h3>
+                    <p className="text-textGray text-sm">
+                      UI architecture & interaction design
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
                   {skills.frontend.map((skill) => (
-                    <div key={skill.name} className="group skill-item">
-                      <div className="flex justify-between mb-2 items-center">
-                        <div className="flex items-center">
-                          <i
-                            className={`skill-icon ${skill.icon}`}
-                            aria-hidden></i>
-                          <span className="font-semibold ml-2">
-                            {skill.name}
-                          </span>
-                        </div>
-                        <span className="text-accent font-bold">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden border border-accent/20">
-                        <div
-                          className="skill-bar bg-gradient-to-r from-accent to-blue-400 h-3 rounded-full transition-all duration-1000"
-                          data-width={`${skill.level}%`}
-                          style={{ width: 0 }}
-                        />
-                      </div>
-                    </div>
+                    <SkillSpeedometer key={skill.name} skill={skill} />
                   ))}
                 </div>
               </div>
 
-              {/* Backend Skills */}
-              <div className="space-y-6 animate-slideInRight">
-                <h3 className="text-2xl font-bold flex items-center gap-3 text-accent">
-                  <i className="fas fa-server text-3xl"></i>Backend
-                </h3>
-                <div className="space-y-4">
+              <div className="p-6 bg-primary/40 border border-accent/20 rounded-2xl backdrop-blur-sm hover:border-accent/40 transition-all animate-slideUp">
+                <div className="flex items-center gap-3 mb-6">
+                  <i className="fas fa-server text-3xl text-accent"></i>
+                  <div>
+                    <h3 className="text-xl font-bold">Backend & Data</h3>
+                    <p className="text-textGray text-sm">
+                      APIs, authentication, and data modeling
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
                   {skills.backend.map((skill) => (
-                    <div key={skill.name} className="group skill-item">
-                      <div className="flex justify-between mb-2 items-center">
-                        <div className="flex items-center">
-                          <i
-                            className={`skill-icon ${skill.icon}`}
-                            aria-hidden></i>
-                          <span className="font-semibold ml-2">
-                            {skill.name}
-                          </span>
-                        </div>
-                        <span className="text-accent font-bold">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden border border-accent/20">
-                        <div
-                          className="skill-bar bg-gradient-to-r from-green-500 to-emerald-400 h-3 rounded-full transition-all duration-1000"
-                          data-width={`${skill.level}%`}
-                          style={{ width: 0 }}
-                        />
-                      </div>
-                    </div>
+                    <SkillSpeedometer key={skill.name} skill={skill} />
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-6 bg-primary/40 border border-accent/20 rounded-2xl backdrop-blur-sm hover:border-accent/40 transition-all animate-slideInRight">
+                <div className="flex items-center gap-3 mb-6">
+                  <i className="fas fa-tools text-3xl text-accent"></i>
+                  <div>
+                    <h3 className="text-xl font-bold">Tooling & Platforms</h3>
+                    <p className="text-textGray text-sm">
+                      Delivery, collaboration, and deployment
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {skills.tools.map((tool) => (
+                    <span
+                      key={tool.name}
+                      className="px-3 py-2 rounded-full border border-accent/30 bg-accent/10 text-sm font-semibold text-accent flex items-center gap-2">
+                      <i className={tool.icon}></i>
+                      {tool.name}
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Tools Section */}
-            <div className="mt-12 animate-slideUp">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 text-accent">
-                <i className="fas fa-tools text-3xl"></i>Tools & Platforms
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {skills.tools.map((tool) => (
-                  <div
-                    key={tool.name}
-                    className="px-4 py-3 bg-primary/40 text-center rounded-lg border border-accent/20 hover:border-accent/60 hover:bg-accent/5 transition-all cursor-pointer group">
-                    <i
-                      className={`${tool.icon} text-2xl mb-2 block`}
-                      aria-hidden></i>
-                    <span className="text-sm font-semibold group-hover:text-accent transition-colors">
-                      {tool.name}
-                    </span>
-                  </div>
-                ))}
+            <div className="mt-10 grid md:grid-cols-2 gap-6">
+              <div className="p-6 bg-primary/40 border border-accent/20 rounded-2xl backdrop-blur-sm animate-slideInLeft">
+                <h4 className="text-lg font-semibold text-accent mb-4">
+                  Core Strengths
+                </h4>
+                <ul className="space-y-3 text-textGray">
+                  <li className="flex items-center gap-3">
+                    <i className="fas fa-check-circle text-accent"></i>
+                    Component-driven UI design with scalable patterns
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <i className="fas fa-check-circle text-accent"></i>
+                    Performance tuning, accessibility, and responsive layouts
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <i className="fas fa-check-circle text-accent"></i>
+                    Secure API integrations and state management
+                  </li>
+                </ul>
+              </div>
+              <div className="p-6 bg-primary/40 border border-accent/20 rounded-2xl backdrop-blur-sm animate-slideInRight">
+                <h4 className="text-lg font-semibold text-accent mb-4">
+                  Preferred Workflow
+                </h4>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  {[
+                    "Discovery",
+                    "Wireframing",
+                    "Component Build",
+                    "API Integration",
+                    "Testing",
+                    "Deployment",
+                  ].map((step) => (
+                    <div
+                      key={step}
+                      className="px-4 py-3 bg-secondary/40 border border-accent/10 rounded-lg text-center text-textGray">
+                      {step}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
