@@ -12,7 +12,7 @@ const projects = {
       "Added Role-Based Access Control (RBAC) for Admins and Users.",
       "Designed glass-morphism responsive UI using Tailwind CSS.",
     ],
-    links: { github: "https://github.com" },
+    links: { github: "https://github.com", live: "https://example.com" },
   },
   p2: {
     title: "FinEase – Personal Finance Management App",
@@ -25,7 +25,7 @@ const projects = {
       "Integrated Recharts for income, expenses, and savings visualization.",
       "Created responsive dashboard with dark/light mode and protected routes.",
     ],
-    links: { github: "https://github.com" },
+    links: { github: "https://github.com", live: "https://example.com" },
   },
   p3: {
     title: "GameHub – Online Game Library",
@@ -37,7 +37,7 @@ const projects = {
       "Implemented game browsing, detailed view, and personal Installed List management.",
       "Integrated Firebase for secure data handling and smooth user experience.",
     ],
-    links: { github: "https://github.com" },
+    links: { github: "https://github.com", live: "https://example.com" },
   },
 };
 
@@ -410,7 +410,7 @@ export default function App() {
               <li key={item}>
                 <a
                   href={`#${item}`}
-                  className="relative group text-gray-300 hover:text-accent transition-colors">
+                  className="nav-link relative group text-gray-300 hover:text-accent transition-colors">
                   {item}
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-accent rounded transition-all group-hover:w-full"></span>
                 </a>
@@ -432,7 +432,7 @@ export default function App() {
                 key={item}
                 href={`#${item}`}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 px-6 hover:bg-accent/10 hover:text-accent transition-all">
+                className="nav-link block py-3 px-6 hover:bg-accent/10 hover:text-accent transition-all">
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </a>
             ))}
@@ -459,9 +459,10 @@ export default function App() {
                 Building Modern Web Experiences
               </h2>
               <p className="text-textGray max-w-lg mb-8 text-lg leading-relaxed">
-                Passionate Junior Frontend Developer specializing in React,
-                Next.js, and Tailwind CSS. I craft responsive, user-centric
-                applications with clean code and optimal performance.
+                Fourth-year CSE student focused on software development, with
+                hands-on experience in React, Next.js, and Tailwind CSS. I build
+                responsive, user-focused products with clean architecture,
+                performance in mind, and attention to detail.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -493,19 +494,19 @@ export default function App() {
                     href="https://github.com/limon-l"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
+                    className="social-link w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
                     <i className="fab fa-github text-xl"></i>
                   </a>
                   <a
                     href="https://linkedin.com/in/limonroyapu"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
+                    className="social-link w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
                     <i className="fab fa-linkedin-in text-xl"></i>
                   </a>
                   <a
                     href="mailto:limonroyapu101@gmail.com"
-                    className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
+                    className="social-link w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 hover:border-accent hover:text-accent hover:scale-110 hover:bg-accent/10 transition-all">
                     <i className="fas fa-envelope text-xl"></i>
                   </a>
                 </div>
@@ -546,7 +547,7 @@ export default function App() {
                 </svg>
 
                 {/* Image Container */}
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-visible border-2 border-accent/30 shadow-2xl relative z-10 bg-gradient-to-br from-accent/10 to-transparent p-0">
+                <div className="hero-portrait w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-visible border-2 border-accent/30 shadow-2xl relative z-10 bg-gradient-to-br from-accent/10 to-transparent p-0">
                   <div className="orbit-ring"></div>
                   <div className="orbit-dot orbit-dot-1"></div>
                   <div className="orbit-dot orbit-dot-2"></div>
@@ -578,10 +579,11 @@ export default function App() {
                     <i className="fas fa-star mr-2"></i>Professional Summary
                   </h3>
                   <p className="text-textGray leading-relaxed">
-                    Results-driven Junior Frontend Developer with strong
-                    expertise in modern JavaScript technologies. Adept at
-                    building scalable, user-focused applications with clean
-                    architecture and optimized performance.
+                    Fourth-year CSE student and aspiring software developer with
+                    a strong foundation in modern JavaScript and web
+                    technologies. I focus on building scalable, user-centered
+                    applications with clean architecture, accessibility, and
+                    performance best practices.
                   </p>
                 </div>
 
@@ -593,36 +595,37 @@ export default function App() {
                   <ul className="space-y-3 text-textGray">
                     <li className="flex items-start gap-3">
                       <span className="objective-dot"></span>
-                      Deliver accessible, performance-optimized web experiences
-                      with clean, scalable architectures.
+                      Deepen full-stack skills across React, Node.js, and
+                      databases while applying clean code and system design
+                      principles.
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="objective-dot"></span>
-                      Collaborate in cross-functional teams to ship reliable
-                      features and measurable business outcomes.
+                      Build production-ready projects that solve real problems
+                      and highlight performance, security, and UX.
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="objective-dot"></span>
-                      Continuously learn and implement modern frontend
-                      engineering practices and tooling.
+                      Collaborate effectively and keep learning modern tools,
+                      testing practices, and deployment workflows.
                     </li>
                   </ul>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
+                  <div className="stat-card p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
                     <div className="text-2xl font-bold text-accent mb-1">
                       3+
                     </div>
                     <div className="text-sm text-textGray">Projects Built</div>
                   </div>
-                  <div className="p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
+                  <div className="stat-card p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
                     <div className="text-2xl font-bold text-accent mb-1">
                       5+
                     </div>
                     <div className="text-sm text-textGray">Skills Mastered</div>
                   </div>
-                  <div className="p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
+                  <div className="stat-card p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
                     <div className="text-2xl font-bold text-accent mb-1">3</div>
                     <div className="text-sm text-textGray">Certifications</div>
                   </div>
@@ -740,7 +743,7 @@ export default function App() {
                   {skills.tools.map((tool) => (
                     <span
                       key={tool.name}
-                      className="px-3 py-2 rounded-full border border-accent/30 bg-accent/10 text-sm font-semibold text-accent flex items-center gap-2">
+                      className="tool-badge px-3 py-2 rounded-full border border-accent/30 bg-accent/10 text-sm font-semibold text-accent flex items-center gap-2">
                       <i className={tool.icon}></i>
                       {tool.name}
                     </span>
@@ -801,7 +804,7 @@ export default function App() {
                 {certifications.map((cert, idx) => (
                   <div
                     key={idx}
-                    className="p-4 bg-primary/40 border border-accent/20 rounded-lg hover:border-accent/60 hover:shadow-[0_0_20px_rgba(56,189,248,0.1)] transition-all hover:-translate-y-1">
+                    className="cert-card p-4 bg-primary/40 border border-accent/20 rounded-lg hover:border-accent/60 hover:shadow-[0_0_20px_rgba(56,189,248,0.1)] transition-all hover:-translate-y-1">
                     <i className="fas fa-award text-accent text-2xl mb-3 block"></i>
                     <h4 className="font-bold text-white">{cert.title}</h4>
                     <p className="text-textGray text-sm">{cert.issuer}</p>
@@ -835,7 +838,7 @@ export default function App() {
                       <img
                         src={p.img}
                         alt={p.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="project-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all"></div>
                     </div>
@@ -928,7 +931,7 @@ export default function App() {
                       <a
                         key={idx}
                         href={contact.link || "#"}
-                        className="group flex items-start gap-4 p-4 rounded-xl bg-primary/30 border border-accent/10 hover:border-accent/40 hover:bg-accent/5 transition-all hover:translate-x-2">
+                        className="contact-item group flex items-start gap-4 p-4 rounded-xl bg-primary/30 border border-accent/10 hover:border-accent/40 hover:bg-accent/5 transition-all hover:translate-x-2">
                         <div className="w-14 h-14 bg-gradient-to-br from-accent/20 to-blue-500/10 rounded-xl flex items-center justify-center text-accent text-xl border border-accent/30 group-hover:border-accent/60 transition-all flex-shrink-0 mt-1">
                           <i className={`fas fa-${contact.icon}`}></i>
                         </div>
@@ -954,19 +957,19 @@ export default function App() {
                         href="https://github.com/limon-l"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
+                        className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
                         <i className="fab fa-github text-lg"></i>
                       </a>
                       <a
                         href="https://linkedin.com/in/limonroyapu"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
+                        className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
                         <i className="fab fa-linkedin-in text-lg"></i>
                       </a>
                       <a
                         href="mailto:limonroyapu101@gmail.com"
-                        className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
+                        className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
                         <i className="fas fa-envelope text-lg"></i>
                       </a>
                     </div>
@@ -1151,13 +1154,20 @@ export default function App() {
                 </ul>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href={modalData.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-3 bg-gradient-to-r from-accent to-blue-500 text-primary font-bold rounded-lg text-center hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all">
                   <i className="fab fa-github mr-2"></i>View Code
+                </a>
+                <a
+                  href={modalData.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 border border-accent text-accent font-bold rounded-lg text-center hover:bg-accent/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.25)] transition-all">
+                  <i className="fas fa-external-link-alt mr-2"></i>Live Demo
                 </a>
                 <button
                   onClick={closeModal}
