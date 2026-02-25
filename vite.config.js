@@ -6,12 +6,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     sourcemap: false,
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: false,
-      },
-    },
+    minify: "esbuild",
   },
   server: {
     port: 5173,
