@@ -56,7 +56,7 @@ export default function AboutSection({ languages }) {
                 <div className="text-sm text-textGray">Skills Mastered</div>
               </div>
               <div className="stat-card p-4 bg-primary/40 border border-accent/20 rounded-xl text-center hover:border-accent/40 transition-all">
-                <div className="text-2xl font-bold text-accent mb-1">3</div>
+                <div className="text-2xl font-bold text-accent mb-1">4</div>
                 <div className="text-sm text-textGray">Certifications</div>
               </div>
             </div>

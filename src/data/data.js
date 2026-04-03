@@ -37,6 +37,34 @@ export const projects = {
     ],
     links: { github: "https://github.com", live: "https://example.com" },
   },
+  p4: {
+    title: "BookCourier – Library Management & Delivery System",
+    img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fit=crop&w=800&q=80",
+    stack: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Firebase",
+      "Stripe API",
+      "TanStack Query",
+      "Framer Motion",
+      "React Leaflet",
+    ],
+    desc: "A sophisticated full-stack library management and book delivery platform with multi-role access control, Stripe payments, real-time order tracking, and an interactive delivery coverage map.",
+    details: [
+      "Architected a multi-role RBAC system (User, Librarian, Admin) — Users borrow/purchase books, Librarians manage inventory and orders, Admins oversee the entire platform with system-wide CRUD control.",
+      "Engineered a secure auth layer combining Firebase (Email/Password & Google OAuth) with JWT-signed cookies, protected by Express middleware for fine-grained route-level authorization.",
+      "Built a full e-commerce checkout pipeline using Stripe API, supporting both book purchases and borrowing with real-time order lifecycle management (Pending → Shipped → Delivered).",
+      "Leveraged TanStack Query (React Query) for intelligent server-state caching and synchronization, significantly reducing redundant API calls and improving perceived performance.",
+      "Integrated React Leaflet for an interactive delivery coverage map and React Hook Form for schema-validated, accessible multi-step forms across the platform.",
+      "Implemented glassmorphism UI with Framer Motion page transitions and system-aware dark/light mode, deployed as a decoupled client–server architecture on Vercel.",
+    ],
+    links: {
+      github: "https://github.com",
+      live: "https://lighthouselibrary.vercel.app",
+    },
+  },
 };
 
 export const skills = {
@@ -79,6 +107,13 @@ export const certifications = [
     author: "UNICEF Digital Learning Team",
     issuer: "UNICEF Bangladesh",
     date: "2024",
+  },
+  {
+    certificate: "Certificate of Completion",
+    courseName: "Complete Web Development Course",
+    author: "Jhankar Mahbub",
+    issuer: "Programming Hero",
+    date: "2025",
   },
   {
     certificate: "Certificate of Completion",
