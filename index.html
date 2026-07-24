@@ -3,8 +3,34 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Portfolio | Full Stack Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Limon Roy Apu — Full Stack Developer Portfolio</title>
+    <meta name="description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building responsive, performant, and user-focused web applications." />
+    <meta name="keywords" content="Full Stack Developer, React Developer, Next.js, Node.js, JavaScript, Web Developer, Portfolio, Limon Roy Apu" />
+    <meta name="author" content="Limon Roy Apu" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://limondevs.vercel.app/" />
+    <meta property="og:title" content="Limon Roy Apu — Full Stack Developer" />
+    <meta property="og:description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies." />
+    <meta property="og:image" content="/hero.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Limon Roy Apu — Full Stack Developer" />
+    <meta name="twitter:description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies." />
+    <meta name="twitter:image" content="/hero.jpeg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://limondevs.vercel.app/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/hero.jpeg" />
+    <link rel="apple-touch-icon" href="/hero.jpeg" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,27 +39,167 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'] },
                     colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
+                        primary: '#0a0e1a',
+                        secondary: '#111827',
+                        surface: '#151c2e',
                         accent: '#38bdf8',
-                        textGray: '#cbd5e1'
-                    }
+                        'accent-deep': '#0ea5e9',
+                        'accent-glow': '#7dd3fc',
+                        textGray: '#94a3b8',
+                        muted: '#64748b',
+                        'card-border': 'rgba(56, 189, 248, 0.12)',
+                        'card-hover': 'rgba(56, 189, 248, 0.25)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 2s infinite',
+                        'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+                        'glow': 'glow-text 3s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'gradient': 'gradient-shift 8s ease infinite',
+                        'slide-up': 'slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-down': 'slide-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-left': 'slide-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-right': 'slide-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scale-in': 'scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in': 'fade-in 0.6s ease forwards',
+                        'blur-in': 'blur-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'typewriter': 'typewriter 3s steps(30) 1s forwards',
+                        'blink': 'blink 1s step-end infinite',
+                        'aurora': 'aurora 20s ease-in-out infinite',
+                        'aurora-alt': 'aurora 25s ease-in-out 5s infinite',
+                        'particle-drift': 'particle-drift 8s ease-in-out infinite',
+                        'meteor': 'meteor 4s linear infinite',
+                        'orbit': 'orbit 14s linear infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        'pulse-soft': {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
+                        },
+                        'glow-text': {
+                            '0%, 100%': { textShadow: '0 0 8px rgba(56,189,248,0.3)' },
+                            '50%': { textShadow: '0 0 24px rgba(56,189,248,0.6), 0 0 48px rgba(56,189,248,0.2)' },
+                        },
+                        'gradient-shift': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        'slide-up': {
+                            from: { opacity: '0', transform: 'translateY(40px)' },
+                            to: { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'slide-down': {
+                            from: { opacity: '0', transform: 'translateY(-20px)' },
+                            to: { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'slide-left': {
+                            from: { opacity: '0', transform: 'translateX(-60px)' },
+                            to: { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'slide-right': {
+                            from: { opacity: '0', transform: 'translateX(60px)' },
+                            to: { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'scale-in': {
+                            from: { opacity: '0', transform: 'scale(0.92)' },
+                            to: { opacity: '1', transform: 'scale(1)' },
+                        },
+                        'fade-in': {
+                            from: { opacity: '0' },
+                            to: { opacity: '1' },
+                        },
+                        'blur-in': {
+                            from: { opacity: '0', filter: 'blur(12px)', transform: 'translateY(20px)' },
+                            to: { opacity: '1', filter: 'blur(0px)', transform: 'translateY(0)' },
+                        },
+                        typewriter: {
+                            from: { width: '0' },
+                            to: { width: '100%' },
+                        },
+                        blink: {
+                            '50%': { borderColor: 'transparent' },
+                        },
+                        aurora: {
+                            '0%': { transform: 'translate3d(-10%, -10%, 0) rotate(0deg) scale(1)' },
+                            '33%': { transform: 'translate3d(8%, 5%, 0) rotate(10deg) scale(1.1)' },
+                            '66%': { transform: 'translate3d(-5%, 8%, 0) rotate(-5deg) scale(0.95)' },
+                            '100%': { transform: 'translate3d(-10%, -10%, 0) rotate(0deg) scale(1)' },
+                        },
+                        'particle-drift': {
+                            '0%': { transform: 'translate(0, 0) scale(0.8)', opacity: '0.2' },
+                            '50%': { transform: 'translate(15px, -35px) scale(1)', opacity: '0.7' },
+                            '100%': { transform: 'translate(-10px, 15px) scale(0.9)', opacity: '0.25' },
+                        },
+                        meteor: {
+                            '0%': { transform: 'translate(0, 0) scaleX(0.3)', opacity: '0' },
+                            '8%': { opacity: '1' },
+                            '100%': { transform: 'translate(500px, 300px) scaleX(1)', opacity: '0' },
+                        },
+                        orbit: {
+                            from: { transform: 'rotate(0deg)' },
+                            to: { transform: 'rotate(360deg)' },
+                        },
+                        shimmer: {
+                            from: { transform: 'translateX(-100%)' },
+                            to: { transform: 'translateX(100%)' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg, var(--tw-gradient-stops))',
+                    },
                 }
             }
         }
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- GSAP (kept as CDN for ease) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- GSAP for premium animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Limon Roy Apu",
+        "url": "https://limondevs.vercel.app/",
+        "jobTitle": "Full Stack Developer",
+        "description": "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
+        "sameAs": [
+            "https://github.com/limon-l",
+            "https://linkedin.com/in/limonroyapu"
+        ],
+        "email": "limonroyapu101@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sylhet",
+            "addressCountry": "BD"
+        }
+    }
+    </script>
+
+    <style>
+        /* Critical CSS for loader - prevents FOUC */
+        .app-loading { opacity: 0; }
+        .app-ready { opacity: 1; transition: opacity 0.5s ease; }
+    </style>
 </head>
 
-<body class="bg-primary text-white">
-    <div id="root"></div>
+<body class="bg-primary text-white antialiased">
+    <div id="root" class="app-loading"></div>
     <script type="module" src="/src/main.jsx"></script>
 </body>
 

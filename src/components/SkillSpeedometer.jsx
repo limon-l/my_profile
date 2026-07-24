@@ -1,68 +1,56 @@
-import React from "react";
+import React, { useId } from "react";
 
 export default function SkillSpeedometer({ skill, getProficiencyLabel }) {
+  const id = useId();
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (skill.level / 100) * circumference;
+  const offset = circumference - (skill.level / 100) * circumference;
+  const gradientId = `skillGrad-${id}`;
 
   return (
-    <div className="flex flex-col items-center group cursor-pointer">
-      <div className="relative w-28 h-28 flex-shrink-0">
+    <div className="flex flex-col items-center group cursor-default">
+      <div className="relative w-24 h-24 md:w-28 md:h-28 flex-shrink-0">
         <svg
-          className="w-full h-full transform -rotate-90"
+          className="w-full h-full -rotate-90"
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg">
-          {/* Background circle */}
           <circle
-            cx="50"
-            cy="50"
-            r={radius}
+            cx="50" cy="50" r={radius}
             fill="none"
-            stroke="rgba(56, 189, 248, 0.15)"
+            stroke="rgba(56,189,248,0.08)"
             strokeWidth="4"
           />
-          {/* Progress circle */}
           <circle
-            cx="50"
-            cy="50"
-            r={radius}
+            cx="50" cy="50" r={radius}
             fill="none"
-            stroke="url(#skillGradient)"
+            stroke={`url(#${gradientId})`}
             strokeWidth="5"
             strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
+            strokeDashoffset={offset}
             strokeLinecap="round"
             className="skill-speedometer-circle"
-            style={{
-              transition:
-                "stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
-            }}
+            style={{ transition: "stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
           />
           <defs>
-            <linearGradient
-              id="skillGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%">
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#60a5fa" />
+              <stop offset="100%" stopColor="#818cf8" />
             </linearGradient>
           </defs>
         </svg>
-        {/* Center icon - shown by default */}
+
+        {/* Icon (default) */}
         <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-          <i className={`${skill.icon} text-4xl text-accent`} aria-hidden></i>
+          <i className={`${skill.icon} text-2xl md:text-3xl text-accent`} aria-hidden="true"></i>
         </div>
-        {/* Center info - hidden by default, shown on hover */}
+
+        {/* Info (on hover) */}
         <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="text-xs font-bold text-accent text-center px-2 leading-tight">
+          <span className="text-[0.6rem] font-bold text-accent text-center px-1 leading-tight">
             {skill.name}
           </span>
-          <p className="text-sm font-semibold text-accent mt-1">
-            {skill.level}%
-          </p>
-          <p className="text-xs text-accent/70">
+          <p className="text-xs font-bold text-accent mt-0.5">{skill.level}%</p>
+          <p className="text-[0.55rem] text-accent/60">
             {getProficiencyLabel(skill.level)}
           </p>
         </div>

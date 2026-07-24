@@ -1,74 +1,113 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function ProjectModal({ modalOpen, modalData, closeModal }) {
-  if (!modalOpen || !modalData) return null;
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    if (modalOpen) {
+      document.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen, closeModal]);
+
+  if (!modalData) return null;
 
   return (
     <div
-      className={`modal fixed inset-0 z-[60] flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm active`}
+      className={`modal-overlay ${modalOpen ? "active" : ""}`}
       onClick={(e) => {
         if (e.target === e.currentTarget) closeModal();
-      }}>
-      <div className="bg-gradient-to-b from-secondary to-primary w-full max-w-3xl rounded-xl shadow-2xl border border-accent/30 overflow-hidden relative max-h-[90vh] overflow-y-auto animate-scaleIn">
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-label={modalData.title}>
+      <div className="modal-content">
+        {/* Close */}
         <button
           onClick={closeModal}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10 hover:rotate-90 transition-transform">
-          <i className="fas fa-times"></i>
+          className="sticky top-4 float-right mr-4 z-10 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-textGray hover:text-white hover:border-accent/30 transition-all"
+          aria-label="Close modal">
+          <i className="fas fa-times text-sm"></i>
         </button>
-        <div className="p-8">
+
+        {/* Image */}
+        <div className="h-56 md:h-64 overflow-hidden relative">
           <img
             src={modalData.img}
-            className="w-full h-64 object-cover rounded-lg mb-6 shadow-lg"
-            alt=""
+            alt={modalData.title}
+            className="w-full h-full object-cover"
           />
-          <h2 className="text-3xl font-bold mb-2 text-accent">
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+        </div>
+
+        <div className="p-8">
+          {/* Title + Desc */}
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
             {modalData.title}
           </h2>
-          <p className="text-gray-300 mb-4">{modalData.desc}</p>
+          <p className="text-textGray text-sm leading-relaxed mb-6">
+            {modalData.desc}
+          </p>
 
+          {/* Tech Stack */}
           <div className="mb-6">
-            <h4 className="font-bold text-white mb-3">Tech Stack:</h4>
+            <h4 className="text-xs uppercase tracking-[0.15em] text-textGray font-semibold mb-3">
+              Tech Stack
+            </h4>
             <div className="flex gap-2 flex-wrap">
               {modalData.stack.map((t) => (
                 <span
                   key={t}
-                  className="bg-accent/10 px-3 py-1 rounded-full text-xs text-accent border border-accent/30">
+                  className="px-3 py-1.5 bg-white/[0.04] border border-white/[0.08] rounded-lg text-xs text-accent font-medium">
                   {t}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="mb-6">
-            <h4 className="font-bold text-white mb-3">Key Features:</h4>
-            <ul className="text-gray-300 space-y-2">
+          {/* Key Features */}
+          <div className="mb-8">
+            <h4 className="text-xs uppercase tracking-[0.15em] text-textGray font-semibold mb-3">
+              Key Features
+            </h4>
+            <ul className="space-y-2.5">
               {modalData.details.map((detail, idx) => (
-                <li key={idx} className="flex gap-2">
-                  <i className="fas fa-check text-accent mt-1"></i>
-                  <span>{detail}</span>
+                <li key={idx} className="flex gap-3 text-sm text-textGray">
+                  <span className="w-5 h-5 rounded-md bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <i className="fas fa-check text-accent text-[0.6rem]"></i>
+                  </span>
+                  <span className="leading-relaxed">{detail}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-3">
             <a
               href={modalData.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3 bg-gradient-to-r from-accent to-blue-500 text-primary font-bold rounded-lg text-center hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all">
-              <i className="fab fa-github mr-2"></i>View Code
+              className="btn-primary flex-1 justify-center !text-sm">
+              <i className="fab fa-github"></i>
+              View Code
             </a>
             <a
               href={modalData.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3 border border-accent text-accent font-bold rounded-lg text-center hover:bg-accent/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.25)] transition-all">
-              <i className="fas fa-external-link-alt mr-2"></i>Live Demo
+              className="btn-secondary flex-1 justify-center !text-sm">
+              <i className="fas fa-external-link-alt"></i>
+              Live Demo
             </a>
             <button
               onClick={closeModal}
-              className="flex-1 py-3 border border-accent text-accent font-bold rounded-lg hover:bg-accent/10 transition-all">
+              className="btn-secondary flex-1 justify-center !text-sm !border-white/10 !text-textGray hover:!text-white hover:!border-white/20">
               Close
             </button>
           </div>

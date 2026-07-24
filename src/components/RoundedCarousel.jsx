@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function RoundedCarousel({ items = [], interval = 1500 }) {
+export default function RoundedCarousel({ items = [], interval = 2000 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const trackRef = React.useRef(null);
 
@@ -12,26 +12,15 @@ export default function RoundedCarousel({ items = [], interval = 1500 }) {
   }, [items.length, interval]);
 
   useEffect(() => {
-    // Scroll the track to show the active pill
     if (trackRef.current) {
-      const track = trackRef.current;
-      const pills = track.querySelectorAll(".carousel-pill");
-
+      const pills = trackRef.current.querySelectorAll(".carousel-pill");
       if (pills[activeIndex]) {
         const activePill = pills[activeIndex];
-        const trackRect = track.getBoundingClientRect();
-        const pillRect = activePill.getBoundingClientRect();
-
-        // Calculate scroll position to center the active pill
         const scrollLeft =
           activePill.offsetLeft -
-          track.clientWidth / 2 +
+          trackRef.current.clientWidth / 2 +
           activePill.clientWidth / 2;
-
-        track.scrollTo({
-          left: scrollLeft,
-          behavior: "smooth",
-        });
+        trackRef.current.scrollTo({ left: scrollLeft, behavior: "smooth" });
       }
     }
   }, [activeIndex]);
@@ -43,9 +32,12 @@ export default function RoundedCarousel({ items = [], interval = 1500 }) {
           <div
             key={idx}
             className={`carousel-pill ${idx === activeIndex ? "active" : ""}`}
-            onClick={() => setActiveIndex(idx)}>
-            <i className={`${item.icon}`} style={{ color: item.color }}></i>
-            <span className="pill-label">{item.name}</span>
+            onClick={() => setActiveIndex(idx)}
+            role="button"
+            tabIndex={0}
+            aria-label={item.name}>
+            <i className={item.icon} style={{ color: item.color }}></i>
+            <span>{item.name}</span>
           </div>
         ))}
       </div>
@@ -55,7 +47,7 @@ export default function RoundedCarousel({ items = [], interval = 1500 }) {
             key={idx}
             onClick={() => setActiveIndex(idx)}
             className={`indicator-dot ${idx === activeIndex ? "active" : ""}`}
-            aria-label={`Go to item ${idx + 1}`}
+            aria-label={`Go to ${items[idx]?.name}`}
           />
         ))}
       </div>

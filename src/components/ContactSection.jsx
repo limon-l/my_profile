@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ContactSection({
   formData,
@@ -8,37 +9,42 @@ export default function ContactSection({
 }) {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-      </div>
+      {/* Background accent */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/[0.03] rounded-full blur-[100px] pointer-events-none" />
+
       <div className="container">
-        <h2 className="section-title text-5xl font-bold text-center mb-4 animate-slideUp">
-          <span className="bg-gradient-to-r from-accent via-blue-400 to-accent bg-clip-text text-transparent">
-            Get In Touch
-          </span>
-        </h2>
-        <p
-          className="text-center text-textGray mb-16 text-lg max-w-2xl mx-auto animate-slideUp"
-          style={{ animationDelay: "100ms" }}>
-          Ready to collaborate? Let's create something extraordinary together.
-          Reach out through your preferred channel.
-        </p>
+        <ScrollReveal className="text-center mb-16">
+          <div className="section-label inline-flex mx-auto mb-4">
+            <i className="fas fa-envelope text-[0.6rem]"></i>
+            Contact
+          </div>
+          <h2 className="section-title mb-4">
+            Let&apos;s Build <span className="text-gradient">Together</span>
+          </h2>
+          <p className="section-subtitle mx-auto">
+            Ready to collaborate? Let&apos;s create something extraordinary together.
+            Reach out through your preferred channel.
+          </p>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-          {/* Left Side - Contact Info */}
-          <div className="space-y-5 animate-slideInLeft">
-            <div className="h-full p-8 bg-gradient-to-br from-primary/60 to-secondary/40 border border-accent/20 rounded-2xl backdrop-blur-md hover:border-accent/40 transition-all">
-              <h3 className="text-2xl font-bold mb-8 text-accent flex items-center gap-3">
-                <i className="fas fa-handshake text-3xl"></i>Contact Info
+          {/* Contact Info */}
+          <ScrollReveal delay={100}>
+            <div className="glass-card p-8 h-full">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <i className="fas fa-handshake text-base"></i>
+                </span>
+                Contact Info
               </h3>
 
-              <div className="space-y-6">
-                <p className="text-textGray text-base leading-relaxed">
-                  I'm actively seeking new opportunities for full-time roles,
-                  freelance projects, and collaborations. Whether you have a
-                  question or just want to say hello, feel free to get in touch!
-                </p>
+              <p className="text-textGray text-sm leading-relaxed mb-7">
+                I&apos;m actively seeking new opportunities for full-time roles,
+                freelance projects, and collaborations. Whether you have a
+                question or just want to say hello, feel free to get in touch!
+              </p>
 
+              <div className="space-y-3">
                 {[
                   {
                     icon: "envelope",
@@ -57,121 +63,119 @@ export default function ContactSection({
                     label: "Location",
                     value: "Sylhet, Bangladesh",
                   },
-                ].map((contact, idx) => (
-                  <a
-                    key={idx}
-                    href={contact.link || "#"}
-                    className="contact-item group flex items-start gap-4 p-4 rounded-xl bg-primary/30 border border-accent/10 hover:border-accent/40 hover:bg-accent/5 transition-all hover:translate-x-2">
-                    <div className="w-14 h-14 bg-gradient-to-br from-accent/20 to-blue-500/10 rounded-xl flex items-center justify-center text-accent text-xl border border-accent/30 group-hover:border-accent/60 transition-all flex-shrink-0 mt-1">
-                      <i className={`fas fa-${contact.icon}`}></i>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-sm text-gray-300 uppercase tracking-wider">
-                        {contact.label}
-                      </h4>
-                      <p className="text-accent text-base font-medium group-hover:text-blue-300 transition-colors">
-                        {contact.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
+                ].map((contact, idx) => {
+                  const Tag = contact.link ? "a" : "div";
+                  return (
+                    <Tag
+                      key={idx}
+                      href={contact.link || undefined}
+                      className="contact-item flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-accent/20 hover:bg-accent/[0.03]">
+                      <div className="w-11 h-11 rounded-xl bg-accent/[0.08] flex items-center justify-center text-accent shrink-0 border border-accent/15">
+                        <i className={`fas fa-${contact.icon} text-sm`}></i>
+                      </div>
+                      <div>
+                        <h4 className="text-[0.65rem] uppercase tracking-[0.15em] text-textGray font-semibold mb-0.5">
+                          {contact.label}
+                        </h4>
+                        <p className="text-sm text-white font-medium">
+                          {contact.value}
+                        </p>
+                      </div>
+                    </Tag>
+                  );
+                })}
               </div>
 
-              {/* Social Links */}
-              <div className="mt-8 pt-8 border-t border-accent/10">
-                <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
+              {/* Social */}
+              <div className="mt-7 pt-6 border-t border-white/[0.05]">
+                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-textGray mb-3 font-semibold">
                   Connect With Me
                 </p>
-                <div className="flex gap-4">
-                  <a
-                    href="https://github.com/limon-l"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
-                    <i className="fab fa-github text-lg"></i>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/limonroyapu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
-                    <i className="fab fa-linkedin-in text-lg"></i>
-                  </a>
-                  <a
-                    href="mailto:limonroyapu101@gmail.com"
-                    className="social-link w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-primary transition-all hover:scale-110">
-                    <i className="fas fa-envelope text-lg"></i>
-                  </a>
+                <div className="flex gap-2">
+                  {[
+                    { href: "https://github.com/limon-l", icon: "fab fa-github", label: "GitHub" },
+                    { href: "https://linkedin.com/in/limonroyapu", icon: "fab fa-linkedin-in", label: "LinkedIn" },
+                    { href: "mailto:limonroyapu101@gmail.com", icon: "fas fa-envelope", label: "Email" },
+                  ].map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-link-btn !w-10 !h-10 !rounded-xl"
+                      aria-label={social.label}>
+                      <i className={`${social.icon} text-sm`}></i>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Right Side - Form */}
-          <div className="animate-slideInRight">
-            <div className="p-8 bg-gradient-to-br from-primary/60 to-secondary/40 border border-accent/20 rounded-2xl backdrop-blur-md hover:border-accent/30 transition-all">
-              <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
-                <i className="fas fa-paper-plane text-accent"></i>Send a Message
+          {/* Form */}
+          <ScrollReveal delay={200} animation="reveal-right">
+            <div className="glass-card p-8">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <i className="fas fa-paper-plane text-base"></i>
+                </span>
+                Send a Message
               </h3>
 
-              <form onSubmit={handleFormSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-gray-400 mb-2">
-                    Full Name
-                  </label>
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div className="form-group">
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleFormChange}
-                    placeholder="John Doe"
+                    placeholder=" "
                     required
-                    className="w-full px-5 py-3 bg-primary/40 border border-accent/20 rounded-xl focus:border-accent focus:outline-none transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.15)] text-white placeholder-gray-500"
+                    aria-label="Full Name"
                   />
+                  <label>Full Name</label>
                 </div>
 
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-gray-400 mb-2">
-                    Email Address
-                  </label>
+                <div className="form-group">
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleFormChange}
-                    placeholder="your@email.com"
+                    placeholder=" "
                     required
-                    className="w-full px-5 py-3 bg-primary/40 border border-accent/20 rounded-xl focus:border-accent focus:outline-none transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.15)] text-white placeholder-gray-500"
+                    aria-label="Email Address"
                   />
+                  <label>Email Address</label>
                 </div>
 
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-gray-400 mb-2">
-                    Message
-                  </label>
+                <div className="form-group">
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleFormChange}
                     rows="5"
-                    placeholder="Tell me about your project..."
+                    placeholder=" "
                     required
-                    className="w-full px-5 py-3 bg-primary/40 border border-accent/20 rounded-xl focus:border-accent focus:outline-none transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.15)] text-white placeholder-gray-500 resize-none"></textarea>
+                    aria-label="Message"
+                    className="resize-none"
+                  />
+                  <label>Your Message</label>
                 </div>
 
-                {/* Status Messages */}
+                {/* Status */}
                 {formStatus === "success" && (
-                  <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-xl flex items-center gap-3">
-                    <i className="fas fa-check-circle text-green-500"></i>
-                    <span className="text-green-300 font-medium">
-                      Message sent successfully! I'll get back to you soon.
+                  <div className="p-4 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-xl flex items-center gap-3 animate-scale-in">
+                    <i className="fas fa-check-circle text-emerald-400"></i>
+                    <span className="text-emerald-300 text-sm font-medium">
+                      Message sent successfully! I&apos;ll get back to you soon.
                     </span>
                   </div>
                 )}
                 {formStatus === "error" && (
-                  <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3">
-                    <i className="fas fa-exclamation-circle text-red-500"></i>
-                    <span className="text-red-300 font-medium">
+                  <div className="p-4 bg-red-500/[0.08] border border-red-500/20 rounded-xl flex items-center gap-3 animate-scale-in">
+                    <i className="fas fa-exclamation-circle text-red-400"></i>
+                    <span className="text-red-300 text-sm font-medium">
                       Oops! Something went wrong. Please try again.
                     </span>
                   </div>
@@ -180,7 +184,7 @@ export default function ContactSection({
                 <button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className="w-full py-3 px-6 bg-gradient-to-r from-accent via-blue-500 to-accent text-primary font-bold rounded-xl hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                  className="btn-primary w-full justify-center !text-sm disabled:opacity-50 disabled:cursor-not-allowed">
                   {formStatus === "sending" ? (
                     <>
                       <i className="fas fa-spinner animate-spin"></i>
@@ -188,18 +192,18 @@ export default function ContactSection({
                     </>
                   ) : (
                     <>
-                      <i className="fas fa-send"></i>
+                      <i className="fas fa-paper-plane"></i>
                       Send Message
                     </>
                   )}
                 </button>
               </form>
 
-              <p className="text-xs text-gray-500 text-center mt-4">
+              <p className="text-xs text-textGray text-center mt-4">
                 I typically respond within 24 hours
               </p>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

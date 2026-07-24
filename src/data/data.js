@@ -10,7 +10,10 @@ export const projects = {
       "Added Role-Based Access Control (RBAC) for Admins and Users.",
       "Designed glass-morphism responsive UI using Tailwind CSS.",
     ],
-    links: { github: "https://github.com", live: "https://example.com" },
+    links: {
+      github: "https://github.com/limon-l/my_travel_client",
+      live: "https://my-travel-client.vercel.app/",
+    },
   },
   p2: {
     title: "FinEase – Personal Finance Management App",
