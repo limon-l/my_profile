@@ -7,15 +7,23 @@ import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import PhilosophySection from "./components/PhilosophySection";
+import DeveloperTerminal from "./components/DeveloperTerminal";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ProjectModal from "./components/ProjectModal";
+import CommandPalette from "./components/CommandPalette";
 import {
   projects,
   skills,
   certifications,
   languages,
   techIcons,
+  testimonials,
+  journey,
+  philosophy,
+  stats,
 } from "./data/data";
 
 export default function App() {
@@ -27,17 +35,21 @@ export default function App() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
+    country: "",
+    budget: "",
+    projectType: "",
+    timeline: "",
     message: "",
+    website: "",
   });
 
-  // Scroll tracking
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Modal body lock
   useEffect(() => {
     document.body.style.overflow = modalOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -67,6 +79,15 @@ export default function App() {
         formDataToSend.append("name", formData.name);
         formDataToSend.append("email", formData.email);
         formDataToSend.append("message", formData.message);
+        formDataToSend.append("company", formData.company);
+        formDataToSend.append("country", formData.country);
+        formDataToSend.append("budget", formData.budget);
+        formDataToSend.append("projectType", formData.projectType);
+        formDataToSend.append("timeline", formData.timeline);
+
+        if (formData.website) {
+          return;
+        }
 
         const response = await fetch("https://formspree.io/f/myzlybdj", {
           method: "POST",
@@ -75,7 +96,17 @@ export default function App() {
 
         if (response.ok) {
           setFormStatus("success");
-          setFormData({ name: "", email: "", message: "" });
+          setFormData({
+            name: "",
+            email: "",
+            company: "",
+            country: "",
+            budget: "",
+            projectType: "",
+            timeline: "",
+            message: "",
+            website: "",
+          });
           setTimeout(() => setFormStatus(""), 5000);
         } else {
           setFormStatus("error");
@@ -106,19 +137,23 @@ export default function App() {
       <LoadingScreen onComplete={handleLoadingComplete} />
       <CustomCursor />
       <AnimatedBackground />
+      <CommandPalette />
 
       {!loading && (
         <>
           <Navigation scrollY={scrollY} />
           <main className="pt-0">
-            <HeroSection techIcons={techIcons} />
-            <AboutSection languages={languages} />
+            <HeroSection techIcons={techIcons} stats={stats} />
+            <AboutSection languages={languages} journey={journey} />
             <SkillsSection
               skills={skills}
               certifications={certifications}
               getProficiencyLabel={getProficiencyLabel}
             />
             <ProjectsSection projects={projects} openModal={openModal} />
+            <TestimonialsSection testimonials={testimonials} />
+            <PhilosophySection philosophy={philosophy} />
+            <DeveloperTerminal />
             <ContactSection
               formData={formData}
               formStatus={formStatus}

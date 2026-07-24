@@ -4,11 +4,29 @@ export const projects = {
     img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?fit=crop&w=800&q=80",
     stack: ["Next.js 14", "NextAuth.js", "Express.js", "MongoDB"],
     desc: "A full-stack travel booking platform integrating a modern Next.js frontend with a secure Express backend.",
+    status: "Live",
+    statusColor: "#34d399",
+    completion: 100,
+    timeline: "4 weeks",
+    category: "Full Stack",
+    highlights: { stars: 12, forks: 5, contributors: 2 },
     details: [
       "Developed with Next.js 14 (App Router) and Express.js for seamless API communication.",
       "Implemented OAuth authentication with NextAuth.js for secure login flows.",
       "Added Role-Based Access Control (RBAC) for Admins and Users.",
       "Designed glass-morphism responsive UI using Tailwind CSS.",
+    ],
+    architecture: {
+      frontend: "Next.js 14 (App Router, RSC)",
+      backend: "Express.js REST API",
+      database: "MongoDB Atlas",
+      auth: "NextAuth.js + OAuth 2.0",
+      deployment: "Vercel + Render",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?fit=crop&w=1200&q=80",
     ],
     links: {
       github: "https://github.com/limon-l/my_travel_client",
@@ -20,11 +38,29 @@ export const projects = {
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=800&q=80",
     stack: ["React.js", "Node.js", "MongoDB", "Firebase"],
     desc: "A real-time personal finance tracker with analytics and secure authentication.",
+    status: "Live",
+    statusColor: "#34d399",
+    completion: 100,
+    timeline: "3 weeks",
+    category: "Full Stack",
+    highlights: { stars: 8, forks: 3, contributors: 1 },
     details: [
       "Built JWT & Firebase Auth based secure login and account management.",
       "Designed RESTful API with complex MongoDB queries for analytics.",
       "Integrated Recharts for income, expenses, and savings visualization.",
       "Created responsive dashboard with dark/light mode and protected routes.",
+    ],
+    architecture: {
+      frontend: "React.js + Recharts",
+      backend: "Node.js + Express",
+      database: "MongoDB",
+      auth: "JWT + Firebase Auth",
+      deployment: "Netlify + Render",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?fit=crop&w=1200&q=80",
     ],
     links: { github: "https://github.com", live: "https://example.com" },
   },
@@ -33,10 +69,28 @@ export const projects = {
     img: "https://store-images.s-microsoft.com/image/apps.51736.14336182876214510.1257f207-809b-4764-86fe-baa35696ced6.7ffe14ee-cd75-4273-b571-408cd44bd9d2",
     stack: ["React", "Tailwind CSS", "DaisyUI", "Firebase"],
     desc: "An engaging online game library for users to discover and manage their favorite games.",
+    status: "Live",
+    statusColor: "#34d399",
+    completion: 100,
+    timeline: "2 weeks",
+    category: "Frontend",
+    highlights: { stars: 6, forks: 2, contributors: 1 },
     details: [
       "Built responsive and interactive UI using React, Tailwind CSS, and DaisyUI.",
       "Implemented game browsing, detailed view, and personal Installed List management.",
       "Integrated Firebase for secure data handling and smooth user experience.",
+    ],
+    architecture: {
+      frontend: "React + DaisyUI",
+      backend: "Serverless",
+      database: "Firebase Realtime DB",
+      auth: "Firebase Auth",
+      deployment: "Netlify",
+    },
+    gallery: [
+      "https://store-images.s-microsoft.com/image/apps.51736.14336182876214510.1257f207-809b-4764-86fe-baa35696ced6.7ffe14ee-cd75-4273-b571-408cd44bd9d2",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?fit=crop&w=1200&q=80",
     ],
     links: { github: "https://github.com", live: "https://example.com" },
   },
@@ -55,6 +109,12 @@ export const projects = {
       "React Leaflet",
     ],
     desc: "A sophisticated full-stack library management and book delivery platform with multi-role access control, Stripe payments, real-time order tracking, and an interactive delivery coverage map.",
+    status: "Live",
+    statusColor: "#34d399",
+    completion: 100,
+    timeline: "6 weeks",
+    category: "Full Stack",
+    highlights: { stars: 18, forks: 7, contributors: 1 },
     details: [
       "Architected a multi-role RBAC system (User, Librarian, Admin) — Users borrow/purchase books, Librarians manage inventory and orders, Admins oversee the entire platform with system-wide CRUD control.",
       "Engineered a secure auth layer combining Firebase (Email/Password & Google OAuth) with JWT-signed cookies, protected by Express middleware for fine-grained route-level authorization.",
@@ -62,6 +122,19 @@ export const projects = {
       "Leveraged TanStack Query (React Query) for intelligent server-state caching and synchronization, significantly reducing redundant API calls and improving perceived performance.",
       "Integrated React Leaflet for an interactive delivery coverage map and React Hook Form for schema-validated, accessible multi-step forms across the platform.",
       "Implemented glassmorphism UI with Framer Motion page transitions and system-aware dark/light mode, deployed as a decoupled client–server architecture on Vercel.",
+    ],
+    architecture: {
+      frontend: "React.js + Framer Motion + TanStack Query",
+      backend: "Node.js + Express.js",
+      database: "MongoDB Atlas",
+      auth: "Firebase Auth + JWT",
+      payments: "Stripe API",
+      deployment: "Vercel + Render",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?fit=crop&w=1200&q=80",
     ],
     links: {
       github: "https://github.com",
@@ -110,6 +183,7 @@ export const certifications = [
     author: "UNICEF Digital Learning Team",
     issuer: "UNICEF Bangladesh",
     date: "2024",
+    icon: "fas fa-shield-alt",
   },
   {
     certificate: "Certificate of Completion",
@@ -117,6 +191,7 @@ export const certifications = [
     author: "Jhankar Mahbub",
     issuer: "Programming Hero",
     date: "2025",
+    icon: "fas fa-code",
   },
   {
     certificate: "Certificate of Completion",
@@ -124,6 +199,7 @@ export const certifications = [
     author: "Edwin Diaz",
     issuer: "Udemy",
     date: "2023",
+    icon: "fab fa-html5",
   },
   {
     certificate: "Certificate of Achievement",
@@ -131,13 +207,118 @@ export const certifications = [
     author: "Pirple Instructors",
     issuer: "Pirple.com",
     date: "2023",
+    icon: "fab fa-css3-alt",
   },
 ];
 
 export const languages = [
-  { name: "Bengali", level: "Native" },
-  { name: "English", level: "Fluent" },
-  { name: "Hindi", level: "Elementary" },
+  { name: "Bengali", level: "Native", flag: "🇧🇩" },
+  { name: "English", level: "Fluent", flag: "🇬🇧" },
+  { name: "Hindi", level: "Elementary", flag: "🇮🇳" },
+];
+
+export const testimonials = [
+  {
+    name: "Shakil Ahmed",
+    role: "Project Collaborator",
+    avatar: "SA",
+    text: "Limon is an exceptional developer who brings both technical skill and creative vision to every project. His attention to detail in UI/UX design is remarkable.",
+    rating: 5,
+    relation: "University Peer",
+  },
+  {
+    name: "Tanvir Hossain",
+    role: "Team Lead – Group Projects",
+    avatar: "TH",
+    text: "Working with Limon on multiple academic projects has been a great experience. He consistently delivers clean, well-structured code and always meets deadlines.",
+    rating: 5,
+    relation: "Academic Partner",
+  },
+  {
+    name: "Farhana Rahman",
+    role: "Client – Freelance",
+    avatar: "FR",
+    text: "Limon delivered our web application ahead of schedule with exceptional quality. His understanding of modern web technologies and user experience is impressive.",
+    rating: 5,
+    relation: "Freelance Client",
+  },
+  {
+    name: "Arif Khan",
+    role: "Senior Developer – Mentor",
+    avatar: "AK",
+    text: "I've mentored many junior developers, but Limon stands out for his quick learning ability and passion for building scalable applications. A future tech leader.",
+    rating: 5,
+    relation: "Mentor",
+  },
+];
+
+export const journey = [
+  {
+    year: "2023",
+    title: "Started B.Sc in CSE",
+    desc: "Enrolled in Computer Science & Engineering at Metropolitan University, Sylhet.",
+    icon: "fas fa-graduation-cap",
+  },
+  {
+    year: "2023",
+    title: "First Web Development Course",
+    desc: "Completed HTML5, CSS3 fundamentals through Udemy and Pirple.com certifications.",
+    icon: "fas fa-code",
+  },
+  {
+    year: "2024",
+    title: "Full Stack Mastery",
+    desc: "Completed Programming Hero's comprehensive web development course. Built first full-stack projects.",
+    icon: "fas fa-laptop-code",
+  },
+  {
+    year: "2024",
+    title: "GameHub & FinEase Launch",
+    desc: "Shipped two major projects: an online game library and a personal finance tracker.",
+    icon: "fas fa-rocket",
+  },
+  {
+    year: "2025",
+    title: "BookCourier & Wanderlust",
+    desc: "Architected complex multi-role systems with Stripe payments, real-time tracking, and RBAC.",
+    icon: "fas fa-layer-group",
+  },
+  {
+    year: "2026",
+    title: "Seeking Opportunities",
+    desc: "Graduating with a strong portfolio, ready for full-time roles in modern web development.",
+    icon: "fas fa-briefcase",
+  },
+];
+
+export const philosophy = [
+  {
+    title: "Clean Architecture",
+    desc: "I write code that speaks. Clear patterns, consistent conventions, and modular systems that scale.",
+    icon: "fas fa-cubes",
+  },
+  {
+    title: "Performance First",
+    desc: "Every millisecond counts. I optimize rendering, reduce bundle sizes, and ensure buttery-smooth experiences.",
+    icon: "fas fa-bolt",
+  },
+  {
+    title: "User-Centered Design",
+    desc: "Technology serves people. I build accessible, intuitive interfaces that put users at the heart of every decision.",
+    icon: "fas fa-heart",
+  },
+  {
+    title: "Continuous Learning",
+    desc: "The web evolves fast, and so do I. I stay current with modern tools, patterns, and best practices.",
+    icon: "fas fa-book-open",
+  },
+];
+
+export const stats = [
+  { value: 4, suffix: "+", label: "Projects Built" },
+  { value: 15, suffix: "+", label: "Skills Mastered" },
+  { value: 4, suffix: "", label: "Certifications" },
+  { value: 100, suffix: "%", label: "Commitment" },
 ];
 
 export const techIcons = [

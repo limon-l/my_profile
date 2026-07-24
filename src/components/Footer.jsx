@@ -1,82 +1,77 @@
-import React from "react";
-import ScrollReveal from "./ScrollReveal";
+import React, { useState, useEffect } from "react";
 
 export default function Footer() {
+  const [showTop, setShowTop] = useState(false);
   const year = new Date().getFullYear();
 
-  return (
-    <footer className="relative py-12 border-t border-white/[0.05]">
-      {/* Top glow line */}
-      <div className="footer-glow" />
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-      <div className="container">
-        <ScrollReveal>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+  return (
+    <>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-inner">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-1">
-              <span className="text-lg font-extrabold tracking-wider text-gradient">LIMON</span>
-              <span className="text-lg font-extrabold tracking-wider text-white/90">.DEV</span>
+            <a href="#home" className="footer-logo group">
+              <span className="footer-logo-icon group-hover:shadow-[0_0_16px_var(--accent-glow)] transition-shadow">L</span>
+              <span>
+                <span className="animated-gradient-text">LIMON</span>
+                <span className="text-white/70">.DEV</span>
+              </span>
             </a>
 
             {/* Nav Links */}
-            <div className="flex flex-wrap justify-center gap-6">
-              {["home", "about", "skills", "projects", "contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item}`}
-                  className="text-sm text-textGray hover:text-accent transition-colors capitalize">
-                  {item}
+            <ul className="footer-links">
+              {["home", "about", "skills", "projects", "testimonials", "contact"].map((item) => (
+                <li key={item}>
+                  <a href={`#${item}`} className="footer-link">{item}</a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Social */}
+            <div className="footer-social">
+              {[
+                { href: "https://github.com/limon-l", icon: "fab fa-github", label: "GitHub" },
+                { href: "https://linkedin.com/in/limonroyapu", icon: "fab fa-linkedin-in", label: "LinkedIn" },
+                { href: "mailto:limonroyapu101@gmail.com", icon: "fas fa-envelope", label: "Email" },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                  <i className={s.icon}></i>
                 </a>
               ))}
             </div>
-
-            {/* Social */}
-            <div className="flex items-center gap-2">
-              <a
-                href="https://github.com/limon-l"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link-btn !w-9 !h-9 !rounded-lg"
-                aria-label="GitHub">
-                <i className="fab fa-github text-sm"></i>
-              </a>
-              <a
-                href="https://linkedin.com/in/limonroyapu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link-btn !w-9 !h-9 !rounded-lg"
-                aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in text-sm"></i>
-              </a>
-              <a
-                href="mailto:limonroyapu101@gmail.com"
-                className="social-link-btn !w-9 !h-9 !rounded-lg"
-                aria-label="Email">
-                <i className="fas fa-envelope text-sm"></i>
-              </a>
-            </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-textGray">
-              <i className="fas fa-heart text-accent/50 mr-1.5"></i>
-              Built with passion. &copy; {year} Limon Roy Apu. All rights reserved.
-            </p>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-xs text-textGray">Available for opportunities</span>
+          <div className="footer-bottom">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+              <p className="text-[var(--text-muted)]">
+                <i className="fas fa-heart text-[var(--accent)] opacity-50 mr-1.5"></i>
+                Built with passion. &copy; {year} Limon Roy Apu. All rights reserved.
+              </p>
+              <div className="flex items-center gap-4">
+                <span className="text-[11px] text-[var(--text-muted)] opacity-50 font-mono">v3.0</span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-[var(--text-muted)] text-xs">Available for opportunities</span>
+                </div>
+              </div>
             </div>
           </div>
-        </ScrollReveal>
-      </div>
+        </div>
+      </footer>
 
       {/* Back to top */}
-      <a
-        href="#home"
-        className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-xl bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-accent hover:bg-accent/10 hover:border-accent/30 transition-all shadow-lg"
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`footer-back-to-top ${showTop ? "visible" : ""}`}
         aria-label="Back to top">
         <i className="fas fa-arrow-up text-sm"></i>
-      </a>
-    </footer>
+      </button>
+    </>
   );
 }

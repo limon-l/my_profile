@@ -10,16 +10,8 @@ export default function SkillSpeedometer({ skill, getProficiencyLabel }) {
   return (
     <div className="flex flex-col items-center group cursor-default">
       <div className="relative w-24 h-24 md:w-28 md:h-28 flex-shrink-0">
-        <svg
-          className="w-full h-full -rotate-90"
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg">
-          <circle
-            cx="50" cy="50" r={radius}
-            fill="none"
-            stroke="rgba(56,189,248,0.08)"
-            strokeWidth="4"
-          />
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r={radius} fill="none" stroke="rgba(0,225,255,0.06)" strokeWidth="4" />
           <circle
             cx="50" cy="50" r={radius}
             fill="none"
@@ -28,31 +20,25 @@ export default function SkillSpeedometer({ skill, getProficiencyLabel }) {
             strokeDasharray={circumference}
             strokeDashoffset={offset}
             strokeLinecap="round"
-            className="skill-speedometer-circle"
-            style={{ transition: "stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
+            className="transition-all duration-[1.2s]"
+            style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
           />
           <defs>
             <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#818cf8" />
+              <stop offset="0%" stopColor="#00e1ff" />
+              <stop offset="100%" stopColor="#7c3aed" />
             </linearGradient>
           </defs>
         </svg>
 
-        {/* Icon (default) */}
         <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-          <i className={`${skill.icon} text-2xl md:text-3xl text-accent`} aria-hidden="true"></i>
+          <i className={`${skill.icon} text-2xl md:text-3xl text-[var(--accent)]`} aria-hidden="true"></i>
         </div>
 
-        {/* Info (on hover) */}
         <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="text-[0.6rem] font-bold text-accent text-center px-1 leading-tight">
-            {skill.name}
-          </span>
-          <p className="text-xs font-bold text-accent mt-0.5">{skill.level}%</p>
-          <p className="text-[0.55rem] text-accent/60">
-            {getProficiencyLabel(skill.level)}
-          </p>
+          <span className="text-[10px] font-bold text-[var(--accent)] text-center px-1 leading-tight">{skill.name}</span>
+          <p className="text-xs font-bold text-[var(--accent)] mt-0.5">{skill.level}%</p>
+          <p className="text-[9px] text-[var(--accent)] opacity-60">{getProficiencyLabel(skill.level)}</p>
         </div>
       </div>
     </div>

@@ -8,7 +8,8 @@
     <meta name="description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building responsive, performant, and user-focused web applications." />
     <meta name="keywords" content="Full Stack Developer, React Developer, Next.js, Node.js, JavaScript, Web Developer, Portfolio, Limon Roy Apu" />
     <meta name="author" content="Limon Roy Apu" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#050510" />
+    <meta name="color-scheme" content="dark" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -18,12 +19,14 @@
     <meta property="og:image" content="/hero.jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Limon Roy Apu — Portfolio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Limon Roy Apu — Full Stack Developer" />
     <meta name="twitter:description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies." />
     <meta name="twitter:image" content="/hero.jpeg" />
+    <meta name="twitter:creator" content="@limonroyapu" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://limondevs.vercel.app/" />
@@ -31,24 +34,26 @@
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="/hero.jpeg" />
     <link rel="apple-touch-icon" href="/hero.jpeg" />
+    <link rel="manifest" href="/manifest.json" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
                     colors: {
-                        primary: '#0a0e1a',
-                        secondary: '#111827',
-                        surface: '#151c2e',
-                        accent: '#38bdf8',
+                        primary: '#050510',
+                        secondary: '#0a0a1a',
+                        surface: '#0a0a1a',
+                        accent: '#00e1ff',
                         'accent-deep': '#0ea5e9',
-                        'accent-glow': '#7dd3fc',
-                        textGray: '#94a3b8',
-                        muted: '#64748b',
-                        'card-border': 'rgba(56, 189, 248, 0.12)',
-                        'card-hover': 'rgba(56, 189, 248, 0.25)',
+                        'accent-glow': '#7c3aed',
+                        'accent-pink': '#f472b6',
+                        textGray: 'rgba(232,234,246,0.6)',
+                        muted: 'rgba(232,234,246,0.35)',
+                        'card-border': 'rgba(255,255,255,0.06)',
+                        'card-hover': 'rgba(0,225,255,0.12)',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -72,6 +77,9 @@
                         'meteor': 'meteor 4s linear infinite',
                         'orbit': 'orbit 14s linear infinite',
                         'shimmer': 'shimmer 2.5s linear infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'border-spin': 'border-spin 4s linear infinite',
+                        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
@@ -83,8 +91,8 @@
                             '50%': { opacity: '0.8' },
                         },
                         'glow-text': {
-                            '0%, 100%': { textShadow: '0 0 8px rgba(56,189,248,0.3)' },
-                            '50%': { textShadow: '0 0 24px rgba(56,189,248,0.6), 0 0 48px rgba(56,189,248,0.2)' },
+                            '0%, 100%': { textShadow: '0 0 8px rgba(0,225,255,0.3)' },
+                            '50%': { textShadow: '0 0 24px rgba(0,225,255,0.6), 0 0 48px rgba(0,225,255,0.2)' },
                         },
                         'gradient-shift': {
                             '0%': { backgroundPosition: '0% 50%' },
@@ -150,6 +158,17 @@
                             from: { transform: 'translateX(-100%)' },
                             to: { transform: 'translateX(100%)' },
                         },
+                        morph: {
+                            '0%, 100%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' },
+                            '50%': { borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%' },
+                        },
+                        'border-spin': {
+                            to: { '--angle': '360deg' },
+                        },
+                        'glow-pulse': {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(0,225,255,0.1)' },
+                            '50%': { boxShadow: '0 0 40px rgba(0,225,255,0.25)' },
+                        },
                     },
                     backgroundImage: {
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -163,7 +182,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- GSAP for premium animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -187,14 +206,18 @@
             "@type": "PostalAddress",
             "addressLocality": "Sylhet",
             "addressCountry": "BD"
+        },
+        "knowsAbout": ["React.js", "Next.js", "Node.js", "JavaScript", "TypeScript", "MongoDB", "Tailwind CSS"],
+        "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "B.Sc in Computer Science & Engineering"
         }
     }
     </script>
 
     <style>
-        /* Critical CSS for loader - prevents FOUC */
         .app-loading { opacity: 0; }
-        .app-ready { opacity: 1; transition: opacity 0.5s ease; }
+        .app-ready { opacity: 1; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     </style>
 </head>
 

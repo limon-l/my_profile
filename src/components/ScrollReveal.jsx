@@ -33,7 +33,7 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`${animation} ${stagger ? "stagger-children" : ""} ${className}`}
+      className={`${animation} ${stagger ? "stagger" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>

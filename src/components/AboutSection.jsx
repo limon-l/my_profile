@@ -1,60 +1,59 @@
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
 
-export default function AboutSection({ languages }) {
+export default function AboutSection({ languages, journey }) {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="section">
       <div className="container">
-        <ScrollReveal className="text-center mb-16">
-          <div className="section-label inline-flex mx-auto mb-4">
-            <i className="fas fa-user text-[0.6rem]"></i>
+        <ScrollReveal className="section-header">
+          <div className="section-label mx-auto">
+            <i className="fas fa-user text-[10px]"></i>
             About
           </div>
-          <h2 className="section-title mb-4">
-            The Developer <span className="text-gradient">Behind the Code</span>
+          <h2 className="section-title">
+            The Developer <span className="animated-gradient-text">Behind the Code</span>
           </h2>
           <p className="section-subtitle mx-auto">
             Building meaningful digital experiences with a focus on performance, accessibility, and clean architecture.
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="about-grid">
           {/* Left Column */}
           <div className="space-y-6">
             <ScrollReveal delay={100}>
               <div className="glass-card p-7">
                 <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-star text-sm"></i>
                   </span>
                   Professional Summary
                 </h3>
-                <p className="text-textGray leading-relaxed text-[0.9rem]">
+                <p className="text-[var(--text-secondary)] leading-relaxed text-[0.9rem]">
                   Fourth-year CSE student and aspiring software developer with a
                   strong foundation in modern JavaScript and web technologies. I
                   focus on building scalable, user-centered applications with
-                  clean architecture, accessibility, and performance best
-                  practices.
+                  clean architecture, accessibility, and performance best practices.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="glass-card p-7 objective-card">
+              <div className="glass-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-bullseye text-sm"></i>
                   </span>
                   What I Drive Toward
                 </h3>
-                <ul className="space-y-3.5 text-textGray text-[0.9rem]">
+                <ul className="space-y-3.5 text-[var(--text-secondary)] text-[0.9rem]">
                   {[
                     "Deepen full-stack skills across React, Node.js, and databases while applying clean code and system design principles.",
                     "Build production-ready projects that solve real problems and highlight performance, security, and UX.",
                     "Collaborate effectively and keep learning modern tools, testing practices, and deployment workflows.",
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="objective-dot" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
                       <span>{text}</span>
                     </li>
                   ))}
@@ -65,19 +64,13 @@ export default function AboutSection({ languages }) {
             <ScrollReveal delay={300} stagger>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: "3+", label: "Projects Built" },
-                  { value: "5+", label: "Skills Mastered" },
+                  { value: "4+", label: "Projects" },
+                  { value: "15+", label: "Skills" },
                   { value: "4", label: "Certifications" },
                 ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="glass-card p-5 text-center cursor-default">
-                    <div className="text-2xl font-extrabold text-gradient mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-[0.7rem] text-textGray uppercase tracking-wider">
-                      {stat.label}
-                    </div>
+                  <div key={stat.label} className="neu-card p-5 text-center">
+                    <div className="text-2xl font-extrabold gradient-text mb-1">{stat.value}</div>
+                    <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -89,29 +82,21 @@ export default function AboutSection({ languages }) {
             <ScrollReveal delay={150} animation="reveal-right">
               <div className="glass-card p-7">
                 <h3 className="text-lg font-bold text-white mb-5 flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-graduation-cap text-sm"></i>
                   </span>
                   Education
                 </h3>
                 <div className="space-y-4">
-                  <div className="p-5 rounded-xl bg-white/[0.02] border-l-2 border-accent hover:bg-accent/[0.03] transition-colors">
-                    <h4 className="font-bold text-white text-[0.95rem]">
-                      B.Sc (Engg.) Computer Science & Engineering
-                    </h4>
-                    <p className="text-accent text-sm font-medium mt-1">
-                      Metropolitan University, Sylhet
-                    </p>
-                    <p className="text-textGray text-xs mt-1">Jan 2023 – Dec 2026</p>
+                  <div className="p-5 rounded-xl bg-[var(--surface-1)] border-l-2 border-[var(--accent)] hover:bg-[rgba(0,225,255,0.03)] transition-colors">
+                    <h4 className="font-bold text-white text-[0.95rem]">B.Sc (Engg.) Computer Science & Engineering</h4>
+                    <p className="text-[var(--accent)] text-sm font-medium mt-1">Metropolitan University, Sylhet</p>
+                    <p className="text-[var(--text-muted)] text-xs mt-1">Jan 2023 – Dec 2026</p>
                   </div>
-                  <div className="p-5 rounded-xl bg-white/[0.02] border-l-2 border-white/20 hover:bg-white/[0.04] transition-colors">
-                    <h4 className="font-bold text-white text-[0.95rem]">
-                      Higher Secondary Certificate
-                    </h4>
-                    <p className="text-accent text-sm font-medium mt-1">
-                      Dhaka City College, Dhaka
-                    </p>
-                    <p className="text-textGray text-xs mt-1">GPA: 5.00 / 5.00</p>
+                  <div className="p-5 rounded-xl bg-[var(--surface-1)] border-l-2 border-white/20 hover:bg-[var(--surface-2)] transition-colors">
+                    <h4 className="font-bold text-white text-[0.95rem]">Higher Secondary Certificate</h4>
+                    <p className="text-[var(--accent)] text-sm font-medium mt-1">Dhaka City College, Dhaka</p>
+                    <p className="text-[var(--text-muted)] text-xs mt-1">GPA: 5.00 / 5.00</p>
                   </div>
                 </div>
               </div>
@@ -120,18 +105,16 @@ export default function AboutSection({ languages }) {
             <ScrollReveal delay={250} animation="reveal-right">
               <div className="glass-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-globe text-sm"></i>
                   </span>
                   Languages
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {languages.map((lang) => (
-                    <span
-                      key={lang.name}
-                      className="px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-textGray font-medium">
-                      {lang.name}
-                      <span className="text-accent/60 ml-1.5">{lang.level}</span>
+                    <span key={lang.name} className="px-4 py-2 rounded-xl bg-[var(--surface-1)] border border-[var(--border-subtle)] text-sm text-[var(--text-secondary)] font-medium">
+                      {lang.flag} {lang.name}
+                      <span className="text-[var(--accent)] ml-1.5 opacity-60">{lang.level}</span>
                     </span>
                   ))}
                 </div>
@@ -141,23 +124,14 @@ export default function AboutSection({ languages }) {
             <ScrollReveal delay={350} animation="reveal-right">
               <div className="glass-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-lightbulb text-sm"></i>
                   </span>
                   Currently Focused On
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {[
-                    "System Design",
-                    "TypeScript",
-                    "Testing",
-                    "CI/CD",
-                    "Performance Optimization",
-                    "Open Source",
-                  ].map((focus) => (
-                    <span
-                      key={focus}
-                      className="px-3 py-1.5 rounded-lg bg-accent/[0.06] border border-accent/[0.12] text-xs text-accent font-medium">
+                  {["System Design", "TypeScript", "Testing", "CI/CD", "Performance Optimization", "Open Source"].map((focus) => (
+                    <span key={focus} className="px-3 py-1.5 rounded-lg bg-[var(--accent-soft)] border border-[var(--border-accent)] text-xs text-[var(--accent)] font-medium">
                       {focus}
                     </span>
                   ))}
@@ -166,6 +140,41 @@ export default function AboutSection({ languages }) {
             </ScrollReveal>
           </div>
         </div>
+
+        {/* Journey Timeline */}
+        {journey && journey.length > 0 && (
+          <ScrollReveal delay={200} className="mt-16">
+            <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
+                <i className="fas fa-road text-sm"></i>
+              </span>
+              My Journey
+            </h3>
+
+            <div className="relative">
+              <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent)] via-[var(--accent-2)] to-transparent opacity-40" />
+
+              <div className="space-y-8">
+                {journey.map((item, idx) => (
+                  <div key={idx} className={`relative flex items-start gap-6 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[var(--accent)] border-4 border-[var(--bg)] z-10 shadow-[0_0_8px_var(--accent-glow)]" />
+
+                    <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${idx % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
+                      <div className="glass-card p-5 inline-block w-full hover:border-[var(--border-strong)] transition-all">
+                        <div className="flex items-center gap-2 mb-2" style={{ justifyContent: idx % 2 === 0 ? "flex-end" : "flex-start" }}>
+                          <span className="text-[11px] font-mono text-[var(--accent)] bg-[var(--accent-soft)] px-2 py-0.5 rounded-md">{item.year}</span>
+                          <i className={`${item.icon} text-[var(--accent)] opacity-50 text-xs`}></i>
+                        </div>
+                        <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
+                        <p className="text-[var(--text-muted)] text-xs leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        )}
       </div>
     </section>
   );
