@@ -395,6 +395,54 @@ export const certifications = [
     date: "2023",
     icon: "fab fa-css3-alt",
   },
+  {
+    certificate: "Statement of Accomplishment",
+    courseName: "Practical AI with Google Gemini and NotebookLM",
+    author: "DataCamp",
+    issuer: "DataCamp",
+    date: "Jul 27, 2026",
+    icon: "fas fa-robot",
+  },
+  {
+    certificate: "Certificate of Workshop Participation",
+    courseName: "AI for Recruitment: Resume Screening system from Scatch",
+    author: "Kryzotech",
+    issuer: "Kryzotech",
+    date: "March 2026",
+    icon: "fas fa-user-check",
+  },
+  {
+    certificate: "Certificate of Appreciation",
+    courseName: "BPL Music Fest 2025",
+    author: "Bangladesh Cricket Board (BCB)",
+    issuer: "Bangladesh Cricket Board (BCB)",
+    date: "2025",
+    icon: "fas fa-music",
+  },
+  {
+    certificate: "Certification of Completion",
+    courseName: "Digital Security Essentials",
+    author: "Digital Security Agency, ICT Division",
+    issuer: "Digital Security Agency, ICT Division",
+    date: "September 2020",
+    icon: "fas fa-shield-alt",
+  },
+  {
+    certificate: "Certification of Completion",
+    courseName: "F-Commerce Business",
+    author: "10 Minutes School",
+    issuer: "10 Minutes School",
+    date: "October 2020",
+    icon: "fas fa-store",
+  },
+  {
+    certificate: "Certification of Completion",
+    courseName: "Green Start-Ups",
+    author: "Futurenation, UNDP, Grameenphone",
+    issuer: "Futurenation, UNDP, Grameenphone",
+    date: "8th August 2025",
+    icon: "fas fa-leaf",
+  },
 ];
 
 export const languages = [
@@ -460,6 +508,30 @@ export const testimonials = [
     rating: 5,
     relation: "Learning Collaborator",
   },
+  {
+    name: "Sadia Afrin",
+    role: "Design Collaborator",
+    avatar: "SA",
+    text: "Limon turns feedback into meaningful product improvements. He is open to discussion, precise in implementation, and consistently keeps the interface feeling clear and intentional.",
+    rating: 5,
+    relation: "University Design Partner",
+  },
+  {
+    name: "Imran Chowdhury",
+    role: "Project Teammate",
+    avatar: "IC",
+    text: "From planning the data flow to polishing the final demo, Limon brought strong ownership to the work. He made complex technical decisions practical for the whole team.",
+    rating: 5,
+    relation: "Academic Project Teammate",
+  },
+  {
+    name: "Maliha Tasnim",
+    role: "Peer Reviewer",
+    avatar: "MT",
+    text: "Limon cares about the details users notice: responsive behavior, readable layouts, and thoughtful interactions. His work feels both technically solid and genuinely welcoming.",
+    rating: 5,
+    relation: "Portfolio Review Partner",
+  },
 ];
 
 export const journey = [
@@ -504,7 +576,7 @@ export const journey = [
 export const stats = [
   { value: 4, suffix: "+", label: "Projects Built" },
   { value: 15, suffix: "+", label: "Skills Mastered" },
-  { value: 4, suffix: "", label: "Certifications" },
+  { value: 10, suffix: "", label: "Certifications" },
 ];
 
 export const techIcons = [

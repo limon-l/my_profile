@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 const SKILL_GROUPS = [
@@ -10,6 +10,16 @@ const SKILL_GROUPS = [
 
 export default function SkillsSection({ skills, certifications }) {
   const [fullscreenCert, setFullscreenCert] = useState(null);
+  const [allCertsOpen, setAllCertsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!allCertsOpen) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setAllCertsOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [allCertsOpen]);
 
   return (
     <section id="skills" className="section" style={{ background: 'var(--surface-1)' }}>
@@ -110,12 +120,18 @@ export default function SkillsSection({ skills, certifications }) {
 
         {/* Certifications */}
         <ScrollReveal className="mt-10" delay={100}>
-          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
-              <i className="fas fa-certificate text-sm"></i>
-            </span>
-            Certifications
-          </h3>
+          <div className="certifications-heading">
+            <h3 className="text-xl font-bold text-white flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
+                <i className="fas fa-certificate text-sm"></i>
+              </span>
+              Certifications
+            </h3>
+            <button type="button" className="certifications-see-all" onClick={() => setAllCertsOpen(true)}>
+              See all
+              <i className="fas fa-arrow-up-right-from-square text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
 
           <div className="certs-carousel" aria-label="Certifications carousel">
             <div className="certs-track">
@@ -170,6 +186,36 @@ export default function SkillsSection({ skills, certifications }) {
                 {fullscreenCert.issuer}
               </div>
               <p className="text-[var(--text-muted)] text-sm">Issued: <span className="text-white">{fullscreenCert.date}</span></p>
+            </div>
+          </div>
+        )}
+
+        {allCertsOpen && (
+          <div className="certifications-modal" onClick={() => setAllCertsOpen(false)} role="dialog" aria-modal="true" aria-label="All certifications">
+            <div className="certifications-modal-panel" onClick={(event) => event.stopPropagation()}>
+              <button type="button" className="certifications-modal-close" onClick={() => setAllCertsOpen(false)} aria-label="Close all certifications">
+                <i className="fas fa-times" aria-hidden="true"></i>
+              </button>
+              <div className="certifications-modal-kicker">
+                <i className="fas fa-certificate" aria-hidden="true"></i>
+                Credentials archive
+              </div>
+              <h2>All <span className="animated-gradient-text">Certifications</span></h2>
+              <p className="certifications-modal-intro">A complete record of courses, workshops, and recognitions.</p>
+              <div className="certifications-list">
+                {certifications.map((cert, index) => (
+                  <button type="button" className="certification-list-item" key={cert.courseName} onClick={() => { setAllCertsOpen(false); setFullscreenCert(cert); }}>
+                    <span className="certification-list-index">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="certification-list-icon"><i className={cert.icon || "fas fa-award"} aria-hidden="true"></i></span>
+                    <span className="certification-list-copy">
+                      <strong>{cert.courseName}</strong>
+                      <small>{cert.certificate} · {cert.issuer}</small>
+                    </span>
+                    <span className="certification-list-date">{cert.date}</span>
+                    <i className="fas fa-chevron-right certification-list-arrow" aria-hidden="true"></i>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 export default function TestimonialsSection({ testimonials }) {
@@ -6,15 +6,15 @@ export default function TestimonialsSection({ testimonials }) {
   const [isPaused, setIsPaused] = useState(false);
 
   const next = useCallback(() => {
-    setActive(prev => (prev + 1) % testimonials.length);
+    setActive((prev) => (prev + 1) % testimonials.length);
   }, [testimonials.length]);
 
   const prev = useCallback(() => {
-    setActive(prev => (prev - 1 + testimonials.length) % testimonials.length);
+    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, [testimonials.length]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused) return undefined;
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [isPaused, next]);
@@ -46,9 +46,10 @@ export default function TestimonialsSection({ testimonials }) {
           className="max-w-3xl mx-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}>
-
           <div className="relative overflow-hidden">
-            <div className="testimonials-track" style={{ transform: `translateX(-${active * 100}%)`, transition: 'transform 0.6s var(--ease-out)' }}>
+            <div
+              className="testimonials-track"
+              style={{ transform: `translateX(-${active * 100}%)`, transition: "transform 0.6s var(--ease-out)" }}>
               {testimonials.map((t, idx) => (
                 <div key={idx} className="testimonial-slide flex-shrink-0 w-full px-2">
                   <div className="glass-card p-8 md:p-10 text-center relative overflow-hidden">
@@ -84,12 +85,10 @@ export default function TestimonialsSection({ testimonials }) {
             </div>
           </div>
 
-          {/* Controls */}
           <div className="testimonials-controls">
             <button onClick={prev} className="btn btn-icon btn-secondary" aria-label="Previous testimonial">
               <i className="fas fa-chevron-left text-xs"></i>
             </button>
-
             <div className="flex gap-2">
               {testimonials.map((_, idx) => (
                 <button
@@ -100,7 +99,6 @@ export default function TestimonialsSection({ testimonials }) {
                 />
               ))}
             </div>
-
             <button onClick={next} className="btn btn-icon btn-secondary" aria-label="Next testimonial">
               <i className="fas fa-chevron-right text-xs"></i>
             </button>
