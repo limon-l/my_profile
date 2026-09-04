@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SkillSpeedometer from "./SkillSpeedometer";
 import ScrollReveal from "./ScrollReveal";
 
 const SKILL_GROUPS = [
@@ -9,7 +8,7 @@ const SKILL_GROUPS = [
   { title: "Tooling & Platforms", subtitle: "Delivery, collaboration, and deployment", icon: "fas fa-wrench", skills: "tools", delay: 300 },
 ];
 
-export default function SkillsSection({ skills, certifications, getProficiencyLabel }) {
+export default function SkillsSection({ skills, certifications }) {
   const [fullscreenCert, setFullscreenCert] = useState(null);
 
   return (
@@ -33,7 +32,7 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
         <div className="grid lg:grid-cols-2 gap-5">
           {SKILL_GROUPS.map((group) => (
             <ScrollReveal key={group.title} delay={group.delay}>
-              <div className="glass-card p-6 h-full">
+              <div className="glass-card editorial-card p-6 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="w-10 h-10 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className={`${group.icon} text-base`}></i>
@@ -44,22 +43,14 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
                   </div>
                 </div>
 
-                {group.skills === "tools" ? (
-                  <div className="flex flex-wrap gap-2">
-                    {skills.tools.map((tool) => (
-                      <span key={tool.name} className="px-3 py-1.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)] font-medium flex items-center gap-2 hover:border-[var(--border-strong)] transition-colors">
-                        <i className={tool.icon}></i>
-                        {tool.name}
+                <div className="flex flex-wrap gap-2">
+                    {skills[group.skills].map((skill) => (
+                      <span key={skill.name} className="skill-chip px-3 py-1.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)] font-medium flex items-center gap-2">
+                        <i className={skill.icon}></i>
+                        {skill.name}
                       </span>
                     ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-2 gap-5">
-                    {skills[group.skills].map((skill) => (
-                      <SkillSpeedometer key={skill.name} skill={skill} getProficiencyLabel={getProficiencyLabel} />
-                    ))}
-                  </div>
-                )}
+                </div>
               </div>
             </ScrollReveal>
           ))}
@@ -68,7 +59,7 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
         {/* Strengths + Workflow */}
         <div className="grid md:grid-cols-2 gap-5 mt-6">
           <ScrollReveal delay={100}>
-            <div className="glass-card p-6">
+            <div className="glass-card editorial-card p-6">
               <h4 className="text-base font-bold text-white mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                   <i className="fas fa-check text-xs"></i>
@@ -91,7 +82,7 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="glass-card p-6">
+            <div className="glass-card editorial-card p-6">
               <h4 className="text-base font-bold text-white mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                   <i className="fas fa-stream text-xs"></i>
@@ -107,7 +98,7 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
                   { step: "Test", icon: "fas fa-vial" },
                   { step: "Deploy", icon: "fas fa-rocket" },
                 ].map((item) => (
-                  <div key={item.step} className="px-3 py-3 rounded-xl bg-[var(--surface-1)] border border-[var(--border-subtle)] text-center hover:border-[var(--border-strong)] transition-colors">
+                  <div key={item.step} className="workflow-step px-3 py-3 rounded-xl bg-[var(--surface-1)] border border-[var(--border-subtle)] text-center">
                     <i className={`${item.icon} text-[var(--accent)] opacity-50 text-xs mb-1.5 block`}></i>
                     <span className="text-[var(--text-secondary)] text-xs font-medium">{item.step}</span>
                   </div>
@@ -126,14 +117,16 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
             Certifications
           </h3>
 
-          <div className="certs-scroll">
-            {certifications.map((cert, idx) => (
+          <div className="certs-carousel" aria-label="Certifications carousel">
+            <div className="certs-track">
+            {[...certifications, ...certifications].map((cert, idx) => (
               <div
-                key={idx}
-                className="cert-card group cursor-pointer"
+                key={`${cert.courseName}-${idx}`}
+                className={`cert-card group cursor-pointer ${idx >= certifications.length ? "cert-card-clone" : ""}`}
                 onClick={() => setFullscreenCert(cert)}
                 role="button"
-                tabIndex={0}
+                tabIndex={idx >= certifications.length ? -1 : 0}
+                aria-hidden={idx >= certifications.length}
                 onKeyDown={(e) => e.key === "Enter" && setFullscreenCert(cert)}
                 aria-label={`View certificate: ${cert.courseName}`}>
                 <div className="flex items-start justify-between mb-3">
@@ -154,6 +147,7 @@ export default function SkillsSection({ skills, certifications, getProficiencyLa
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </ScrollReveal>
 

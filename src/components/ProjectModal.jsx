@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function ProjectModal({ modalOpen, modalData, closeModal }) {
   const [activeGalleryIdx, setActiveGalleryIdx] = useState(0);
+  const [architectureExpanded, setArchitectureExpanded] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -25,7 +26,10 @@ export default function ProjectModal({ modalOpen, modalData, closeModal }) {
     };
   }, [modalOpen, closeModal, modalData]);
 
-  useEffect(() => { setActiveGalleryIdx(0); }, [modalData]);
+  useEffect(() => {
+    setActiveGalleryIdx(0);
+    setArchitectureExpanded(false);
+  }, [modalData]);
 
   if (!modalData) return null;
 
@@ -125,9 +129,23 @@ export default function ProjectModal({ modalOpen, modalData, closeModal }) {
           {/* Architecture */}
           {modalData.architecture && (
             <div className="mb-6">
-              <h4 className="modal-section-title">Architecture</h4>
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <h4 className="modal-section-title !mb-0">Architecture</h4>
+                {Object.keys(modalData.architecture).length > 4 && (
+                  <button
+                    type="button"
+                    className="modal-architecture-toggle"
+                    onClick={() => setArchitectureExpanded((expanded) => !expanded)}
+                    aria-expanded={architectureExpanded}>
+                    {architectureExpanded ? "Show less" : `Show all ${Object.keys(modalData.architecture).length}`}
+                    <i className={`fas fa-chevron-${architectureExpanded ? "up" : "down"}`} aria-hidden="true" />
+                  </button>
+                )}
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {Object.entries(modalData.architecture).map(([key, val]) => (
+                {Object.entries(modalData.architecture)
+                  .slice(0, architectureExpanded ? undefined : 4)
+                  .map(([key, val]) => (
                   <div key={key} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[var(--surface-1)] border border-[var(--border-subtle)]">
                     <i className="fas fa-cube text-[var(--accent)] opacity-40 text-xs"></i>
                     <div>
@@ -135,7 +153,7 @@ export default function ProjectModal({ modalOpen, modalData, closeModal }) {
                       <p className="text-white text-xs font-medium">{val}</p>
                     </div>
                   </div>
-                ))}
+                  ))}
               </div>
             </div>
           )}
@@ -152,14 +170,18 @@ export default function ProjectModal({ modalOpen, modalData, closeModal }) {
 
           {/* Actions */}
           <div className="modal-actions">
-            <a href={modalData.links.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary flex-1 justify-center !text-sm">
-              <i className="fab fa-github"></i>
-              View Code
-            </a>
-            <a href={modalData.links.live} target="_blank" rel="noopener noreferrer" className="btn btn-secondary flex-1 justify-center !text-sm">
-              <i className="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
+            {modalData.links?.github && (
+              <a href={modalData.links.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary flex-1 justify-center !text-sm">
+                <i className="fab fa-github"></i>
+                View Code
+              </a>
+            )}
+            {modalData.links?.live && (
+              <a href={modalData.links.live} target="_blank" rel="noopener noreferrer" className="btn btn-secondary flex-1 justify-center !text-sm">
+                <i className="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            )}
             <button onClick={closeModal} className="btn btn-ghost flex-1 justify-center !text-sm">
               Close
             </button>

@@ -46,8 +46,7 @@ const COMMANDS = {
     "Projects Built:   4+",
     "Skills Mastered:  15+",
     "Certifications:   4",
-    "Lines of Code:    50K+",
-    "Coffee Consumed:  ∞",
+    "Focus:            Building useful web products",
   ],
   contact: () => [
     "Email:    limonroyapu101@gmail.com",

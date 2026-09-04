@@ -62,7 +62,7 @@ export const projects = {
       "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?fit=crop&w=1200&q=80",
     ],
-    links: { github: "https://github.com", live: "https://example.com" },
+    links: {},
   },
   p3: {
     title: "GameHub – Online Game Library",
@@ -92,7 +92,7 @@ export const projects = {
       "https://images.unsplash.com/photo-1511512578047-dfb367046420?fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?fit=crop&w=1200&q=80",
     ],
-    links: { github: "https://github.com", live: "https://example.com" },
+    links: {},
   },
   p4: {
     title: "BookCourier – Library Management & Delivery System",
@@ -137,8 +137,183 @@ export const projects = {
       "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?fit=crop&w=1200&q=80",
     ],
     links: {
-      github: "https://github.com",
+      github: null,
       live: "https://lighthouselibrary.vercel.app",
+    },
+  },
+  p5: {
+    title: "Ponnaloy – AI-Assisted E-commerce Platform",
+    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?fit=crop&w=800&q=80",
+    stack: [
+      "Express.js",
+      "SQLite3",
+      "Vanilla JavaScript",
+      "Tailwind CSS",
+      "GSAP",
+      "OpenAI API",
+    ],
+    desc: "A full-stack e-commerce platform combining a dark glass interface, session-based commerce flows, an AI shopping assistant, and a role-aware admin dashboard.",
+    status: "Live",
+    statusColor: "#34d399",
+    completion: 100,
+    timeline: "Full Stack",
+    category: "E-commerce",
+    details: [
+      "Built a customer storefront with 500 seeded products across 10 categories, search, sorting, filters, product detail pages, cart, wishlist, checkout, and order history.",
+      "Added an AI shopping assistant with OpenAI integration and a local product-matching fallback when the API is unavailable.",
+      "Implemented session-based authentication with bcryptjs password hashing, role-aware admin access, Helmet.js, rate limiting, and sanitized user responses.",
+      "Created an admin workspace for dashboard metrics, product CRUD, order status management, user management, inventory alerts, and recent activity.",
+      "Added practical commerce UX including promo codes, saved addresses, newsletter subscriptions, recently viewed products, toast feedback, and order celebrations.",
+      "Structured the app as a deployable Express and SQLite backend with a vanilla JavaScript frontend, Tailwind CSS, GSAP, AOS, and responsive mobile-first layouts.",
+    ],
+    architecture: {
+      runtime: "Node.js 18+",
+      server: "Express.js 4",
+      database: "SQLite3",
+      sessions: "connect-sqlite3",
+      auth: "Session auth + bcryptjs",
+      ai: "OpenAI API + local fallback",
+      deployment: "Vercel + Render",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556742111-a301076d9d18?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556740749-887f6717d7e4?fit=crop&w=1200&q=80",
+    ],
+    links: {
+      live: "https://ponnaloy.vercel.app",
+    },
+  },
+  p6: {
+    title: "BD Blood Finder – Emergency Donation Logistics",
+    img: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?fit=crop&w=800&q=80",
+    stack: ["Serverless", "Geolocation", "Background Alarms", "Real-time Matching"],
+    desc: "An emergency blood donation logistics platform for Bangladesh, designed around zero-cost infrastructure and fast donor-to-request matching.",
+    status: "Live",
+    statusColor: "#34d399",
+    category: "Civic Tech",
+    timeline: "Serverless",
+    details: [
+      "Connects urgent blood requests with nearby donors through real-time geospatial matching.",
+      "Supports multi-bag donation tracking for requests that require more than one donor.",
+      "Uses native background hardware alarms to help keep urgent donation workflows visible.",
+      "Designed as a zero-cost serverless architecture for practical accessibility and low operational overhead.",
+    ],
+    architecture: {
+      platform: "Serverless",
+      matching: "Real-time geospatial search",
+      tracking: "Multi-bag donation workflow",
+      alerts: "Native background hardware alarms",
+      focus: "Bangladesh emergency response",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1615461066841-6116e61058f4?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1579154204601-01588f351e67?fit=crop&w=1200&q=80",
+    ],
+    links: {
+      live: "https://telegram.dog/blood_boss_bot",
+    },
+  },
+  p7: {
+    title: "SyncSpace – Real-time Collaborative Meetings",
+    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?fit=crop&w=800&q=80",
+    stack: ["Next.js 15", "Fastify 5", "Socket.IO", "LiveKit WebRTC", "MongoDB", "TypeScript"],
+    desc: "A production-grade, self-hosted meeting platform combining HD video, live chat, collaborative notes, file sharing, and structured meeting controls.",
+    status: "Live",
+    statusColor: "#34d399",
+    category: "Real-time Systems",
+    timeline: "Monorepo",
+    details: [
+      "Delivers HD video and audio through LiveKit WebRTC with adaptive quality, screen sharing, device selection, and gallery or active-speaker views.",
+      "Adds meeting controls including waiting rooms, meeting locks, host transfer, co-host roles, mute-all, participant removal, and configurable permissions.",
+      "Combines Socket.IO messaging, typing indicators, reactions, hand raising, system events, and Yjs-powered collaborative notes.",
+      "Supports file sharing with a 50MB limit, searchable participant panels, side panels, fullscreen mode, and responsive meeting layouts.",
+      "Uses session authentication, token rotation, Argon2 hashing, rate limiting, input sanitization, Zod validation, and structured logging.",
+      "Organizes the web and API applications in a pnpm Turborepo monorepo with shared TypeScript types, validation, and configuration packages.",
+    ],
+    architecture: {
+      frontend: "Next.js 15 + React 19",
+      backend: "Fastify 5 + Socket.IO",
+      video: "LiveKit WebRTC",
+      collaboration: "Yjs + WebSocket",
+      database: "MongoDB + Mongoose",
+      deployment: "Vercel + Render",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?fit=crop&w=1200&q=80",
+    ],
+    links: {
+      live: "https://sync-space-api.vercel.app",
+    },
+  },
+  p8: {
+    title: "MetroBridge – Mentorship & Academic Collaboration",
+    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80",
+    stack: ["React 19", "Vite 8", "Tailwind CSS", "Firebase Auth", "Socket.IO", "Axios"],
+    desc: "A role-aware mentorship and academic collaboration platform designed for Metropolitan University, Sylhet.",
+    status: "In Progress",
+    statusColor: "#f59e0b",
+    category: "EdTech",
+    timeline: "React SPA",
+    details: [
+      "Designed separate student, mentor, and admin experiences with protected React Router v7 routes and role-aware navigation.",
+      "Covers the complete mentorship journey: discovery, connections, appointment booking, messaging, documents, profiles, and moderation.",
+      "Adds real-time collaboration through Socket.IO messaging, voice/video call surfaces, virtual classrooms, and shared academic workflows.",
+      "Includes public landing, authentication, password recovery, contact, FAQ, blog listing, and blog detail experiences.",
+      "Uses a reusable UI system with custom design tokens, responsive layouts, accessible forms, feedback toasts, and shared dashboard primitives.",
+      "Connects the SPA to Firebase Authentication and an Axios service layer with auth interception and retry handling.",
+    ],
+    architecture: {
+      frontend: "React 19 + Vite 8",
+      styling: "Tailwind CSS 3 + custom design tokens",
+      routing: "React Router v7 + protected routes",
+      auth: "Firebase Authentication",
+      realtime: "Socket.IO Client",
+      services: "Axios API client with retry logic",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?fit=crop&w=1200&q=80",
+    ],
+    links: {
+      github: "https://github.com/limon-l/metroBridge-client",
+    },
+  },
+  p9: {
+    title: "CompileOne – Educational Compiler IDE",
+    img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?fit=crop&w=800&q=80",
+    stack: ["C", "Flex", "Python", "PyQt5", "JSON", "Pytest"],
+    desc: "A phase-driven compiler IDE that makes lexing, parsing, semantics, IR, optimization, code generation, and execution visible through structured artifacts.",
+    status: "Active",
+    statusColor: "#34d399",
+    category: "Developer Tools",
+    timeline: "Compiler pipeline",
+    details: [
+      "Built a C-based compiler backend with a phase CLI exposing lex, parse, AST, semantic, IR, optimization, codegen, and run commands.",
+      "Produces JSON artifacts for every compiler phase so the next stage and the PyQt5 interface consume the same structured source of truth.",
+      "Created a Python/PyQt5 desktop IDE with source editing, diagnostics, token, AST, IR, assembly, and execution-result panels.",
+      "Added a Mini-C study mode with example programs powered by the project's own lexer and interpreter backend.",
+      "Orchestrated backend builds and compilation runs through dedicated application services for tooling, settings, theming, and runtime output.",
+      "Validated frontend behavior and backend artifacts with pytest unit and integration tests, including golden JSON comparisons.",
+    ],
+    architecture: {
+      backend: "C compiler pipeline + Flex lexer",
+      frontend: "Python + PyQt5 desktop IDE",
+      artifacts: "Structured JSON phase outputs",
+      language: "Mini-C study mode",
+      testing: "Pytest frontend + backend integration",
+      tooling: "GCC / MinGW + Make",
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?fit=crop&w=1200&q=80",
+    ],
+    links: {
+      github: "https://github.com/limon-l/CompileOne",
     },
   },
 };
@@ -250,6 +425,30 @@ export const testimonials = [
     rating: 5,
     relation: "Mentor",
   },
+  {
+    name: "Nusrat Jahan",
+    role: "Project Collaborator",
+    avatar: "NJ",
+    text: "Limon has a rare ability to move from a rough product idea to a clear, polished interface. He listens carefully, communicates progress, and makes the technical decisions easy to understand.",
+    rating: 5,
+    relation: "University Project Partner",
+  },
+  {
+    name: "Mahmudul Hasan",
+    role: "Technical Teammate",
+    avatar: "MH",
+    text: "What stood out was Limon's ownership. He investigated the difficult parts, kept the code organized, and still made time to refine the experience users actually see.",
+    rating: 5,
+    relation: "Academic Team Member",
+  },
+  {
+    name: "Raihan Kabir",
+    role: "Study Group Partner",
+    avatar: "RK",
+    text: "Limon is thoughtful about both engineering and presentation. His project demos are structured, easy to follow, and show genuine curiosity about how systems work under the surface.",
+    rating: 5,
+    relation: "Learning Collaborator",
+  },
 ];
 
 export const journey = [
@@ -291,34 +490,10 @@ export const journey = [
   },
 ];
 
-export const philosophy = [
-  {
-    title: "Clean Architecture",
-    desc: "I write code that speaks. Clear patterns, consistent conventions, and modular systems that scale.",
-    icon: "fas fa-cubes",
-  },
-  {
-    title: "Performance First",
-    desc: "Every millisecond counts. I optimize rendering, reduce bundle sizes, and ensure buttery-smooth experiences.",
-    icon: "fas fa-bolt",
-  },
-  {
-    title: "User-Centered Design",
-    desc: "Technology serves people. I build accessible, intuitive interfaces that put users at the heart of every decision.",
-    icon: "fas fa-heart",
-  },
-  {
-    title: "Continuous Learning",
-    desc: "The web evolves fast, and so do I. I stay current with modern tools, patterns, and best practices.",
-    icon: "fas fa-book-open",
-  },
-];
-
 export const stats = [
   { value: 4, suffix: "+", label: "Projects Built" },
   { value: 15, suffix: "+", label: "Skills Mastered" },
   { value: 4, suffix: "", label: "Certifications" },
-  { value: 100, suffix: "%", label: "Commitment" },
 ];
 
 export const techIcons = [

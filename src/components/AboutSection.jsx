@@ -1,7 +1,7 @@
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
 
-export default function AboutSection({ languages, journey }) {
+export default function AboutSection({ languages }) {
   return (
     <section id="about" className="section">
       <div className="container">
@@ -22,7 +22,7 @@ export default function AboutSection({ languages, journey }) {
           {/* Left Column */}
           <div className="space-y-6">
             <ScrollReveal delay={100}>
-              <div className="glass-card p-7">
+              <div className="glass-card editorial-card p-7">
                 <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-3">
                   <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-star text-sm"></i>
@@ -39,7 +39,7 @@ export default function AboutSection({ languages, journey }) {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="glass-card p-7">
+              <div className="glass-card editorial-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
                   <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-bullseye text-sm"></i>
@@ -80,7 +80,7 @@ export default function AboutSection({ languages, journey }) {
           {/* Right Column */}
           <div className="space-y-6">
             <ScrollReveal delay={150} animation="reveal-right">
-              <div className="glass-card p-7">
+              <div className="glass-card editorial-card p-7">
                 <h3 className="text-lg font-bold text-white mb-5 flex items-center gap-3">
                   <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-graduation-cap text-sm"></i>
@@ -103,7 +103,7 @@ export default function AboutSection({ languages, journey }) {
             </ScrollReveal>
 
             <ScrollReveal delay={250} animation="reveal-right">
-              <div className="glass-card p-7">
+              <div className="glass-card editorial-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
                   <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-globe text-sm"></i>
@@ -122,7 +122,7 @@ export default function AboutSection({ languages, journey }) {
             </ScrollReveal>
 
             <ScrollReveal delay={350} animation="reveal-right">
-              <div className="glass-card p-7">
+              <div className="glass-card editorial-card p-7">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-3">
                   <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
                     <i className="fas fa-lightbulb text-sm"></i>
@@ -141,40 +141,6 @@ export default function AboutSection({ languages, journey }) {
           </div>
         </div>
 
-        {/* Journey Timeline */}
-        {journey && journey.length > 0 && (
-          <ScrollReveal delay={200} className="mt-16">
-            <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-3">
-              <span className="w-9 h-9 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
-                <i className="fas fa-road text-sm"></i>
-              </span>
-              My Journey
-            </h3>
-
-            <div className="relative">
-              <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent)] via-[var(--accent-2)] to-transparent opacity-40" />
-
-              <div className="space-y-8">
-                {journey.map((item, idx) => (
-                  <div key={idx} className={`relative flex items-start gap-6 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[var(--accent)] border-4 border-[var(--bg)] z-10 shadow-[0_0_8px_var(--accent-glow)]" />
-
-                    <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${idx % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
-                      <div className="glass-card p-5 inline-block w-full hover:border-[var(--border-strong)] transition-all">
-                        <div className="flex items-center gap-2 mb-2" style={{ justifyContent: idx % 2 === 0 ? "flex-end" : "flex-start" }}>
-                          <span className="text-[11px] font-mono text-[var(--accent)] bg-[var(--accent-soft)] px-2 py-0.5 rounded-md">{item.year}</span>
-                          <i className={`${item.icon} text-[var(--accent)] opacity-50 text-xs`}></i>
-                        </div>
-                        <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                        <p className="text-[var(--text-muted)] text-xs leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        )}
       </div>
     </section>
   );

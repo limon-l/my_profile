@@ -26,7 +26,7 @@ export default function Footer() {
 
             {/* Nav Links */}
             <ul className="footer-links">
-              {["home", "about", "skills", "projects", "testimonials", "contact"].map((item) => (
+              {["home", "about", "experience", "skills", "projects", "testimonials", "contact"].map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} className="footer-link">{item}</a>
                 </li>

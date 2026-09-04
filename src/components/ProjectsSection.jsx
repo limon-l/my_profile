@@ -1,34 +1,154 @@
-import React, { useRef, useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
-const CATEGORIES = ["All", "Full Stack", "Frontend"];
-
 export default function ProjectsSection({ projects, openModal }) {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const cardsRef = useRef({});
-
   const projectKeys = Object.keys(projects);
-  const filteredKeys = activeFilter === "All"
-    ? projectKeys
-    : projectKeys.filter((k) => projects[k].category === activeFilter);
+  const featuredKey = projectKeys.includes("p4") ? "p4" : projectKeys[0];
+  const featuredProject = projects[featuredKey];
+  const supportingKeys = projectKeys.filter((key) => key !== featuredKey);
+  const [rotation, setRotation] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [shelfPaused, setShelfPaused] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
 
-  const handleMouseMove = useCallback((e, key) => {
-    const card = cardsRef.current[key];
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty("--mouse-x", `${x}%`);
-    card.style.setProperty("--mouse-y", `${y}%`);
-    const tiltX = ((e.clientY - rect.top) / rect.height - 0.5) * -6;
-    const tiltY = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
-    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
-  }, []);
+  const rotateProjects = useCallback(() => {
+    if (supportingKeys.length < 2) return;
+    setRotation((current) => (current + 1) % supportingKeys.length);
+    setIsRotating(true);
+    window.setTimeout(() => setIsRotating(false), 900);
+  }, [supportingKeys.length]);
 
-  const handleMouseLeave = useCallback((key) => {
-    const card = cardsRef.current[key];
-    if (card) card.style.transform = "";
-  }, []);
+  useEffect(() => {
+    if (shelfPaused || supportingKeys.length < 2) return undefined;
+    const timer = window.setInterval(rotateProjects, 7000);
+    return () => window.clearInterval(timer);
+  }, [rotateProjects, shelfPaused, supportingKeys.length]);
+
+  const orderedSupportingKeys = supportingKeys.map(
+    (_, index) => supportingKeys[(index + rotation) % supportingKeys.length]
+  );
+  const displayedSupportingKeys = isExpanded
+    ? orderedSupportingKeys
+    : orderedSupportingKeys.slice(0, 3);
+
+  const ProjectActions = ({ project, compact = false }) => (
+    <div className={`project-actions ${compact ? "project-actions-compact" : ""}`}>
+      <button
+        type="button"
+        className="project-view-button"
+        onClick={(event) => {
+          event.stopPropagation();
+          openModal(project.key);
+        }}>
+        <span>Explore case study</span>
+        <i className="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </button>
+      {project.links?.live && (
+        <a
+          href={project.links.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-live-link"
+          onClick={(event) => event.stopPropagation()}>
+          <i className="fas fa-globe" aria-hidden="true"></i>
+          Live
+        </a>
+      )}
+    </div>
+  );
+
+  const renderProject = (key, index, featured = false) => {
+    const p = { ...projects[key], key };
+    return (
+      <ScrollReveal key={key} animation="reveal-deconstruct" delay={index * 100} className={featured ? "project-featured-wrap" : ""}>
+        <article
+          className={`project-card ${featured ? "project-card-featured" : "project-card-supporting"}`}
+          onClick={() => openModal(key)}
+          onMouseMove={(event) => {
+            if (window.matchMedia("(pointer: coarse)").matches) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`);
+            event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`);
+            event.currentTarget.style.setProperty("--tilt-x", `${((event.clientY - rect.top) / rect.height - 0.5) * -2.2}deg`);
+            event.currentTarget.style.setProperty("--tilt-y", `${((event.clientX - rect.left) / rect.width - 0.5) * 2.2}deg`);
+          }}
+          onMouseLeave={(event) => {
+            event.currentTarget.style.setProperty("--tilt-x", "0deg");
+            event.currentTarget.style.setProperty("--tilt-y", "0deg");
+          }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+              e.preventDefault();
+              openModal(key);
+            }
+          }}
+          aria-label={`View details for ${p.title}`}>
+          <div className="project-card-image">
+            <img src={p.img} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+            <div className="project-image-shade" />
+            <div className="project-image-grid" aria-hidden="true" />
+            <span className="project-image-mark" aria-hidden="true">↗</span>
+            <div className="project-hover-signal" aria-hidden="true">
+              <span className="project-hover-signal-label">
+                <i className={`fas ${p.category === "Real-time Systems" ? "fa-bolt" : p.category === "Developer Tools" ? "fa-terminal" : p.category === "EdTech" ? "fa-graduation-cap" : "fa-layer-group"}`} />
+                {p.category || "Product system"}
+              </span>
+              <span className="project-hover-signal-bars">
+                <i /><i /><i /><i /><i />
+              </span>
+            </div>
+            <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
+            {p.status && (
+              <div className="project-card-status">
+                <span style={{ background: p.statusColor }} />
+                {p.status}
+              </div>
+            )}
+            {p.category && <span className="project-category">{p.category}</span>}
+            {featured && (
+              <span className="project-featured-label">
+                <i className="fas fa-sparkles" aria-hidden="true" />
+                Featured build
+              </span>
+            )}
+          </div>
+
+          <div className="project-card-body">
+            <div className="project-card-heading">
+              <div>
+                <span className="project-card-kicker">{featured ? "Flagship case study" : "Selected project"}</span>
+                <h3 className="project-card-title">{p.title}</h3>
+              </div>
+              {p.timeline && (
+                <span className="project-timeline">
+                  <i className="fas fa-clock" aria-hidden="true" />
+                  {p.timeline}
+                </span>
+              )}
+            </div>
+            <p className="project-card-desc">{p.desc}</p>
+
+            {featured && p.details?.[0] && (
+              <p className="project-card-proof">
+                <i className="fas fa-arrow-trend-up" aria-hidden="true" />
+                {p.details[0]}
+              </p>
+            )}
+
+            <div className="project-card-footer">
+              <div className="project-card-tech">
+                {p.stack.slice(0, featured ? 4 : 3).map((tech) => <span key={tech}>{tech}</span>)}
+                {p.stack.length > (featured ? 4 : 3) && <span className="project-tech-more">+{p.stack.length - (featured ? 4 : 3)}</span>}
+              </div>
+              <ProjectActions project={p} compact={!featured} />
+            </div>
+          </div>
+        </article>
+      </ScrollReveal>
+    );
+  };
 
   return (
     <section id="projects" className="section">
@@ -42,126 +162,42 @@ export default function ProjectsSection({ projects, openModal }) {
             Featured <span className="animated-gradient-text">Work</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Selected projects showcasing full-stack development, clean architecture, and attention to user experience.
+            A closer look at how I turn complex requirements into useful, considered digital products.
           </p>
         </ScrollReveal>
 
-        {/* Filter buttons */}
-        <div className="projects-filters">
-          {CATEGORIES.map((cat) => (
+        <div className="projects-showcase">
+          <div className="projects-featured">
+            {renderProject(featuredKey, 0, true)}
+          </div>
+          <div
+            className={`projects-supporting ${isRotating ? "is-rotating" : ""}`}
+            onMouseEnter={() => setShelfPaused(true)}
+            onMouseLeave={() => setShelfPaused(false)}
+            onFocus={() => setShelfPaused(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setShelfPaused(false);
+            }}>
+            <div className="projects-supporting-intro">
+              <div>
+                <span className="projects-overline">More selected work</span>
+                <span className="projects-rotation-note">
+                  <i className={`fas fa-${shelfPaused ? "pause" : "rotate"}`} aria-hidden="true" />
+                  {shelfPaused ? "Paused while browsing" : "Rotates every 7 seconds"}
+                </span>
+              </div>
+              <span className="projects-count">{String(supportingKeys.length).padStart(2, "0")} builds</span>
+            </div>
+            {displayedSupportingKeys.map((key, index) => renderProject(key, index + 1))}
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`projects-filter-btn ${activeFilter === cat ? "active" : ""}`}>
-              {cat}
+              type="button"
+              className="projects-expand-button"
+              onClick={() => setIsExpanded((expanded) => !expanded)}
+              aria-expanded={isExpanded}>
+              {isExpanded ? "Show less" : "See more"}
+              <i className={`fas fa-chevron-${isExpanded ? "up" : "down"}`} aria-hidden="true" />
             </button>
-          ))}
-        </div>
-
-        <div className="projects-grid">
-          {filteredKeys.map((k, idx) => {
-            const p = projects[k];
-            return (
-              <ScrollReveal key={k} delay={idx * 100}>
-                <div
-                  ref={(el) => (cardsRef.current[k] = el)}
-                  onMouseMove={(e) => handleMouseMove(e, k)}
-                  onMouseLeave={() => handleMouseLeave(k)}
-                  className="project-card group cursor-pointer"
-                  onClick={() => openModal(k)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && openModal(k)}
-                  aria-label={`View details for ${p.title}`}>
-
-                  {/* Spotlight overlay */}
-                  <div className="absolute inset-0 rounded-[var(--radius-lg)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      background: 'radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,225,255,0.06), transparent 70%)',
-                    }} />
-
-                  {/* Image */}
-                  <div className="project-card-image">
-                    <img src={p.img} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/20 to-transparent opacity-60" />
-
-                    {p.status && (
-                      <div className="project-card-status">
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: p.statusColor }} />
-                        {p.status}
-                      </div>
-                    )}
-
-                    {p.category && (
-                      <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[var(--accent-soft)] backdrop-blur-md border border-[var(--border-accent)]">
-                        <span className="text-[11px] font-semibold text-[var(--accent)]">{p.category}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="project-card-body">
-                    <h3 className="project-card-title group-hover:text-[var(--accent)] transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="project-card-desc">{p.desc}</p>
-
-                    {p.timeline && (
-                      <div className="flex items-center gap-3 mb-3 text-[11px] text-[var(--text-muted)]">
-                        <span className="flex items-center gap-1">
-                          <i className="fas fa-clock text-[var(--accent)] opacity-50"></i>
-                          {p.timeline}
-                        </span>
-                        {p.completion !== undefined && (
-                          <span className="flex items-center gap-1">
-                            <i className="fas fa-check-circle text-[var(--accent)] opacity-50"></i>
-                            {p.completion}%
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {p.completion !== undefined && (
-                      <div className="project-card-progress">
-                        <div className="project-card-progress-bar">
-                          <div className="project-card-progress-fill" style={{ width: `${p.completion}%` }} />
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="project-card-tech mt-4">
-                      {p.stack.slice(0, 3).map((tech) => (
-                        <span key={tech}>{tech}</span>
-                      ))}
-                      {p.stack.length > 3 && (
-                        <span className="!bg-[var(--accent-soft)] !border-[var(--border-accent)] !text-[var(--accent)]">
-                          +{p.stack.length - 3}
-                        </span>
-                      )}
-                    </div>
-
-                    {p.highlights && (
-                      <div className="flex items-center gap-4 mt-3 text-[11px] text-[var(--text-muted)]">
-                        <span className="flex items-center gap-1">
-                          <i className="fas fa-star text-amber-400 opacity-60"></i>
-                          {p.highlights.stars}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <i className="fas fa-code-branch text-[var(--accent)] opacity-50"></i>
-                          {p.highlights.forks}
-                        </span>
-                      </div>
-                    )}
-
-                    <div className="flex items-center gap-2 text-[var(--accent)] text-sm font-semibold mt-4">
-                      <span>View Details</span>
-                      <i className="fas fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform duration-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
+          </div>
         </div>
       </div>
     </section>

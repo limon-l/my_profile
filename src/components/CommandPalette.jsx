@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 const NAV_SECTIONS = [
   { id: "home", label: "Home", icon: "fas fa-home", shortcut: "⌘H" },
   { id: "about", label: "About", icon: "fas fa-user", shortcut: "⌘A" },
+  { id: "experience", label: "Experience", icon: "fas fa-route", shortcut: "⌘X" },
   { id: "skills", label: "Skills", icon: "fas fa-code", shortcut: "⌘S" },
   { id: "projects", label: "Projects", icon: "fas fa-briefcase", shortcut: "⌘P" },
   { id: "testimonials", label: "Testimonials", icon: "fas fa-quote-right", shortcut: "⌘T" },
@@ -13,7 +14,7 @@ const QUICK_ACTIONS = [
   { id: "github", label: "View GitHub", icon: "fab fa-github", action: () => window.open("https://github.com/limon-l", "_blank") },
   { id: "linkedin", label: "LinkedIn Profile", icon: "fab fa-linkedin-in", action: () => window.open("https://linkedin.com/in/limonroyapu", "_blank") },
   { id: "email", label: "Send Email", icon: "fas fa-envelope", action: () => window.location.href = "mailto:limonroyapu101@gmail.com" },
-  { id: "resume", label: "Download Resume", icon: "fas fa-file-download", action: () => {} },
+  { id: "resume", label: "Request CV", icon: "fas fa-file-download", action: () => window.location.href = "mailto:limonroyapu101@gmail.com?subject=CV%20request" },
   { id: "top", label: "Back to Top", icon: "fas fa-arrow-up", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
 ];
 

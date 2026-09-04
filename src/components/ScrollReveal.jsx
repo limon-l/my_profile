@@ -14,10 +14,11 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
+    let revealTimer;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
+          revealTimer = setTimeout(() => {
             el.classList.add("visible");
           }, delay);
           observer.unobserve(el);
@@ -27,7 +28,10 @@ export default function ScrollReveal({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(revealTimer);
+      observer.disconnect();
+    };
   }, [delay, threshold]);
 
   return (

@@ -8,8 +8,9 @@
     <meta name="description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building responsive, performant, and user-focused web applications." />
     <meta name="keywords" content="Full Stack Developer, React Developer, Next.js, Node.js, JavaScript, Web Developer, Portfolio, Limon Roy Apu" />
     <meta name="author" content="Limon Roy Apu" />
-    <meta name="theme-color" content="#050510" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -37,6 +38,13 @@
     <link rel="manifest" href="/manifest.json" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        (() => {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.dataset.theme = savedTheme || systemTheme;
+        })();
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -215,14 +223,10 @@
     }
     </script>
 
-    <style>
-        .app-loading { opacity: 0; }
-        .app-ready { opacity: 1; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-    </style>
 </head>
 
 <body class="bg-primary text-white antialiased">
-    <div id="root" class="app-loading"></div>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 </body>
 

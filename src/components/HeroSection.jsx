@@ -10,10 +10,6 @@ const TYPED_ROLES = [
   "Problem Solver",
 ];
 
-const GREETINGS = [
-  "Hello", "Bonjour", "Hola", "Namaste", "Salaam", "Olá", "Merhaba", "Konnichiwa",
-];
-
 function useAnimatedCounter(target, duration = 2000) {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
@@ -63,7 +59,6 @@ export default function HeroSection({ techIcons, stats }) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [greeting, setGreeting] = useState("Hello");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef(null);
 
@@ -86,15 +81,6 @@ export default function HeroSection({ techIcons, stats }) {
     }
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
-
-  useEffect(() => {
-    let idx = 0;
-    const interval = setInterval(() => {
-      idx = (idx + 1) % GREETINGS.length;
-      setGreeting(GREETINGS[idx]);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleMouseMove = useCallback((e) => {
     if (!sectionRef.current) return;
@@ -127,26 +113,19 @@ export default function HeroSection({ techIcons, stats }) {
           </ScrollReveal>
 
           <ScrollReveal delay={150}>
-            <p className="text-accent font-mono text-sm tracking-wide">
-              {greeting}, world<span className="text-white/30"> // {greeting.toLowerCase()}</span>
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <h1 className="hero-name">
-              Hi, I&apos;m{" "}
-              <span className="animated-gradient-text">Limon</span>
-            </h1>
-          </ScrollReveal>
-
-          <ScrollReveal delay={350}>
-            <div className="flex items-center gap-2">
+            <div className="hero-role flex items-center gap-2" aria-live="polite">
               <span className="text-xl md:text-2xl font-bold text-white/80 font-mono">{displayText}</span>
               <span className="typed-cursor" />
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={500}>
+          <ScrollReveal delay={220}>
+            <h1 className="hero-name">
+              Hi, I&apos;m <span className="animated-gradient-text">Limon</span>
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={300}>
             <p className="text-[var(--text-secondary)] max-w-lg text-[0.95rem] leading-relaxed">
               Fourth-year CSE student focused on software development, with
               hands-on experience in React, Next.js, and Tailwind CSS. I build
@@ -155,9 +134,12 @@ export default function HeroSection({ techIcons, stats }) {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={600}>
+          <ScrollReveal delay={400}>
             <div className="hero-cta">
-              <a href="#contact" className="btn btn-primary">
+              <a href="#contact" onClick={(event) => {
+                event.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }} className="btn btn-primary">
                 Get In Touch
                 <i className="fas fa-arrow-right text-sm"></i>
               </a>
@@ -201,9 +183,6 @@ export default function HeroSection({ techIcons, stats }) {
         {/* Right Visual */}
         <ScrollReveal animation="reveal-scale" delay={300} className="flex justify-center">
           <div className="hero-visual" style={{
-            position: 'relative',
-            width: '400px',
-            height: '400px',
             transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)`,
             transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           }}>
@@ -218,7 +197,7 @@ export default function HeroSection({ techIcons, stats }) {
             </div>
 
             {/* Portrait */}
-            <div className="absolute inset-[40px] rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl bg-gradient-to-br from-[rgba(0,225,255,0.05)] to-transparent"
+            <div className="hero-portrait absolute inset-[40px] rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl bg-gradient-to-br from-[rgba(0,225,255,0.05)] to-transparent"
               style={{
                 transform: `translate(${-mousePos.x * 0.3}px, ${-mousePos.y * 0.3}px)`,
                 transition: "transform 0.4s ease",
@@ -233,7 +212,7 @@ export default function HeroSection({ techIcons, stats }) {
             </div>
 
             {/* Tech carousel at bottom */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
+            <div className="hero-tech-carousel absolute left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
               <RoundedCarousel items={techIcons} interval={2200} />
             </div>
           </div>

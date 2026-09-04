@@ -1,22 +1,29 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-const NAV_ITEMS = ["home", "about", "skills", "projects", "testimonials", "contact"];
+const NAV_ITEMS = ["home", "about", "experience", "skills", "projects", "testimonials", "contact"];
 const NAV_ICONS = {
   home: "fas fa-home",
   about: "fas fa-user",
+  experience: "fas fa-route",
   skills: "fas fa-code",
   projects: "fas fa-briefcase",
   testimonials: "fas fa-quote-right",
   contact: "fas fa-envelope",
 };
 
-export default function Navigation({ scrollY }) {
+export default function Navigation({ scrollY, theme, onThemeToggle }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isScrolled = scrollY > 50;
+
+  const scrollToSection = useCallback((event, sectionId) => {
+    event.preventDefault();
+    setMobileOpen(false);
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   const updateScrollProgress = useCallback(() => {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -59,6 +66,14 @@ export default function Navigation({ scrollY }) {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, []);
 
   return (
     <>
@@ -106,14 +121,14 @@ export default function Navigation({ scrollY }) {
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-3">
             <button
-              onClick={() => document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", ctrlKey: true }))}
-              className="navbar-kbd cursor-pointer"
-              aria-label="Open command palette">
-              <i className="fas fa-search text-[10px]"></i>
-              <span>⌘K</span>
+              type="button"
+              onClick={onThemeToggle}
+              className="theme-toggle"
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
+              <i className={theme === "dark" ? "fas fa-sun" : "fas fa-moon"} aria-hidden="true"></i>
             </button>
-
-            <a href="#contact" className="navbar-hire-btn">
+            <a href="#contact" onClick={(event) => scrollToSection(event, "contact")} className="navbar-hire-btn">
               <i className="fas fa-paper-plane text-[10px]"></i>
               Hire Me
             </a>
@@ -121,6 +136,7 @@ export default function Navigation({ scrollY }) {
 
           {/* Mobile toggle */}
           <button
+            type="button"
             onClick={() => setMobileOpen((v) => !v)}
             className="navbar-toggle"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -148,6 +164,14 @@ export default function Navigation({ scrollY }) {
 
         <div className="mt-8 pt-6 border-t border-white/5 space-y-3 w-full max-w-[280px]">
           <button
+            type="button"
+            onClick={onThemeToggle}
+            className="btn-secondary w-full justify-center">
+            <i className={theme === "dark" ? "fas fa-sun" : "fas fa-moon"}></i>
+            {theme === "dark" ? "Light theme" : "Dark theme"}
+          </button>
+          <button
+            type="button"
             onClick={() => {
               setMobileOpen(false);
               setTimeout(() => {
@@ -159,7 +183,7 @@ export default function Navigation({ scrollY }) {
             Command Palette
             <kbd className="text-[10px] text-white/30 font-mono">⌘K</kbd>
           </button>
-          <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary w-full justify-center">
+          <a href="#contact" onClick={(event) => scrollToSection(event, "contact")} className="btn-primary w-full justify-center">
             <i className="fas fa-paper-plane"></i>
             Get In Touch
           </a>
