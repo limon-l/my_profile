@@ -127,7 +127,7 @@ export default function HeroSection({ techIcons, stats }) {
 
           <ScrollReveal delay={300}>
             <p className="text-[var(--text-secondary)] max-w-lg text-[0.95rem] leading-relaxed">
-              Fourth-year CSE student focused on software development, with
+              Final-year CSE student focused on software development, with
               hands-on experience in React, Next.js, and Tailwind CSS. I build
               responsive, user-focused products with clean architecture,
               performance in mind, and attention to detail.

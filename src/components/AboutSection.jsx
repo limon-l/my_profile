@@ -30,7 +30,7 @@ export default function AboutSection({ languages }) {
                   Professional Summary
                 </h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed text-[0.9rem]">
-                  Fourth-year CSE student and aspiring software developer with a
+                  Final-year CSE student and aspiring software developer with a
                   strong foundation in modern JavaScript and web technologies. I
                   focus on building scalable, user-centered applications with
                   clean architecture, accessibility, and performance best practices.
