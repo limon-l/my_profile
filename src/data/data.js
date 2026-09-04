@@ -331,6 +331,8 @@ export const skills = {
     { name: "Tailwind CSS", level: 96, icon: "fab fa-css3-alt" },
     { name: "Bootstrap", level: 92, icon: "fab fa-bootstrap" },
     { name: "JavaScript ES6+", level: 93, icon: "fab fa-js" },
+    { name: "Framer Motion", level: 82, icon: "fas fa-wand-magic-sparkles" },
+    { name: "React Leaflet", level: 78, icon: "fas fa-map-location-dot" },
   ],
   backend: [
     { name: "Node.js", level: 85, icon: "fab fa-node-js" },
@@ -338,6 +340,10 @@ export const skills = {
     { name: "MongoDB", level: 80, icon: "fas fa-database" },
     { name: "Firebase", level: 82, icon: "fas fa-fire" },
     { name: "REST APIs", level: 88, icon: "fas fa-network-wired" },
+    { name: "Socket.IO", level: 80, icon: "fas fa-bolt" },
+    { name: "Stripe API", level: 75, icon: "fas fa-credit-card" },
+    { name: "SQLite", level: 76, icon: "fas fa-database" },
+    { name: "OpenAI API", level: 72, icon: "fas fa-brain" },
   ],
   tools: [
     { name: "GitHub", icon: "fab fa-github" },
@@ -348,6 +354,11 @@ export const skills = {
     { name: "MongoDB", icon: "fas fa-database" },
     { name: "Firebase", icon: "fas fa-fire" },
     { name: "DaisyUI", icon: "fas fa-palette" },
+    { name: "PyQt5", icon: "fas fa-window-maximize" },
+    { name: "Flex", icon: "fas fa-code-branch" },
+    { name: "LiveKit", icon: "fas fa-video" },
+    { name: "Yjs", icon: "fas fa-users" },
+    { name: "GSAP", icon: "fas fa-film" },
   ],
 };
 

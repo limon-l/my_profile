@@ -91,6 +91,11 @@ export default function ProjectsSection({ projects, openModal }) {
             <div className="project-image-grid" aria-hidden="true" />
             <span className="project-image-mark" aria-hidden="true">↗</span>
             <div className="project-hover-signal" aria-hidden="true">
+              <div className="project-hover-copy">
+                <span className="project-hover-index">{String(index + 1).padStart(2, "0")}</span>
+                <strong>{p.title.split(" – ")[0]}</strong>
+                <small>Open case study</small>
+              </div>
               <span className="project-hover-signal-label">
                 <i className={`fas ${p.category === "Real-time Systems" ? "fa-bolt" : p.category === "Developer Tools" ? "fa-terminal" : p.category === "EdTech" ? "fa-graduation-cap" : "fa-layer-group"}`} />
                 {p.category || "Product system"}
@@ -120,13 +125,13 @@ export default function ProjectsSection({ projects, openModal }) {
               <div>
                 <span className="project-card-kicker">{featured ? "Flagship case study" : "Selected project"}</span>
                 <h3 className="project-card-title">{p.title}</h3>
+                {p.timeline && (
+                  <span className="project-timeline">
+                    <i className="fas fa-clock" aria-hidden="true" />
+                    {p.timeline}
+                  </span>
+                )}
               </div>
-              {p.timeline && (
-                <span className="project-timeline">
-                  <i className="fas fa-clock" aria-hidden="true" />
-                  {p.timeline}
-                </span>
-              )}
             </div>
             <p className="project-card-desc">{p.desc}</p>
 
@@ -137,11 +142,18 @@ export default function ProjectsSection({ projects, openModal }) {
               </p>
             )}
 
+            <div className="project-card-tech">
+                {p.stack.slice(0, featured ? 4 : 3).map((tech) => (
+                  <span key={tech} className="project-tech-badge">
+                    <i className="fas fa-code" aria-hidden="true" />
+                    {tech}
+                  </span>
+                ))}
+                {p.stack.length > (featured ? 4 : 3) && (
+                  <span className="project-tech-more">+{p.stack.length - (featured ? 4 : 3)}</span>
+                )}
+            </div>
             <div className="project-card-footer">
-              <div className="project-card-tech">
-                {p.stack.slice(0, featured ? 4 : 3).map((tech) => <span key={tech}>{tech}</span>)}
-                {p.stack.length > (featured ? 4 : 3) && <span className="project-tech-more">+{p.stack.length - (featured ? 4 : 3)}</span>}
-              </div>
               <ProjectActions project={p} compact={!featured} />
             </div>
           </div>

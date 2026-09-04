@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Limon Roy Apu — Full Stack Developer Portfolio</title>
     <meta name="description" content="Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building responsive, performant, and user-focused web applications." />
     <meta name="keywords" content="Full Stack Developer, React Developer, Next.js, Node.js, JavaScript, Web Developer, Portfolio, Limon Roy Apu" />
@@ -40,6 +40,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         (() => {
+            window.history.scrollRestoration = 'manual';
+            if (window.location.hash) {
+                window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+            }
             const savedTheme = localStorage.getItem('portfolio-theme');
             const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
             document.documentElement.dataset.theme = savedTheme || systemTheme;

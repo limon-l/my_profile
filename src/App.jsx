@@ -52,10 +52,17 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const cleanUrl = `${window.location.pathname}${window.location.search}`;
     if (window.location.hash) {
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+      window.history.replaceState(null, "", cleanUrl);
     }
-    window.scrollTo(0, 0);
+
+    // Prevent the browser from restoring a deep scroll position on a fresh visit.
+    window.history.scrollRestoration = "manual";
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    resetScroll();
+    const frame = window.requestAnimationFrame(resetScroll);
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
