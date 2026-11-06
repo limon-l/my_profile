@@ -1,0 +1,1188 @@
+{
+  "capturedAt": "2026-11-06T00:50:52.343Z",
+  "browser": "Chromium 156.0.8078.4 headless; local browser executable, no emulated throttling",
+  "baseURL": "http://127.0.0.1:5173",
+  "contactSafety": "All POST requests intercepted locally; no message delivered and no external account modified.",
+  "results": [
+    {
+      "name": "Homepage identity, local portrait, screenshots and runtime",
+      "status": "passed",
+      "durationMs": 3415
+    },
+    {
+      "name": "Responsive routes: six requested widths in both themes",
+      "status": "passed",
+      "durationMs": 74476
+    },
+    {
+      "name": "Project filters update visible projects and pressed states",
+      "status": "passed",
+      "durationMs": 1135
+    },
+    {
+      "name": "Research lens reorders truthful content with keyboard activation",
+      "status": "passed",
+      "durationMs": 942
+    },
+    {
+      "name": "Toolkit categories, search, disclosures, project links and empty state",
+      "status": "passed",
+      "durationMs": 1075
+    },
+    {
+      "name": "Lab atlas selection, keyboard operation and full static notebook",
+      "status": "passed",
+      "durationMs": 1058
+    },
+    {
+      "name": "Homepage research-question links reach their corresponding notebook note",
+      "status": "passed",
+      "durationMs": 3682
+    },
+    {
+      "name": "Journal real notes, hash deep link and keyboard-readable code",
+      "status": "passed",
+      "durationMs": 1446
+    },
+    {
+      "name": "Five case studies: navigation, title, source links and architecture",
+      "status": "passed",
+      "durationMs": 8671
+    },
+    {
+      "name": "Browser back/forward, incoming anchors and missing-route fallback",
+      "status": "passed",
+      "durationMs": 2454
+    },
+    {
+      "name": "Theme toggle persists across reload and updates semantic colors",
+      "status": "passed",
+      "durationMs": 2328
+    },
+    {
+      "name": "Keyboard mobile menu: Tab loop, Escape, hidden links and route focus",
+      "status": "passed",
+      "durationMs": 966
+    },
+    {
+      "name": "Reduced motion: static content and no long-running animations",
+      "status": "passed",
+      "durationMs": 834
+    },
+    {
+      "name": "Contact validation, mocked success, rate limit, HTTP error and network error",
+      "status": "passed",
+      "durationMs": 3425
+    },
+    {
+      "name": "Source action opens the intended repository in an isolated tab",
+      "status": "passed",
+      "durationMs": 887
+    },
+    {
+      "name": "Automated WCAG A/AA scans of all routes in dark and light themes",
+      "status": "failed",
+      "message": "See browser-results.json accessibility violations\n\n2 !== 0\n",
+      "durationMs": 21084
+    },
+    {
+      "name": "No unhandled application runtime exceptions",
+      "status": "passed",
+      "durationMs": 0
+    }
+  ],
+  "errors": [],
+  "responsive": [
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "text": "// Evidence vocabulary used by the content validator\nco"
+        }
+      ]
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "text": "// Evidence vocabulary used by the content validator\nco"
+        }
+      ]
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "dark",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "text": "// Evidence vocabulary used by the content validator\nco"
+        }
+      ]
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 320,
+      "viewport": 320,
+      "documentWidth": 320,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "text": "// Evidence vocabulary used by the content validator\nco"
+        }
+      ]
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 375,
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 1024,
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 1440,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflowing": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/lab",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/journal",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/ponnaloy",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/wanderlust",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/book-courier",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/metrobridge",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    },
+    {
+      "route": "/work/bd-blood-finder",
+      "theme": "light",
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "overflowing": []
+    }
+  ],
+  "accessibility": [
+    {
+      "theme": "dark",
+      "route": "/",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[aria-label=\"Read the Ponnaloy case study\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                "a[aria-label=\"Read the Wanderlust case study\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"book-courier\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"metrobridge\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"bd-blood-finder\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 8
+        }
+      ],
+      "passedRules": 27
+    },
+    {
+      "theme": "dark",
+      "route": "/lab",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 22
+    },
+    {
+      "theme": "dark",
+      "route": "/journal",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 23
+    },
+    {
+      "theme": "dark",
+      "route": "/work/ponnaloy",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/wanderlust",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 5
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/book-courier",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/metrobridge",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/bd-blood-finder",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[aria-label=\"Read the Ponnaloy case study\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                "a[aria-label=\"Read the Wanderlust case study\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"book-courier\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"metrobridge\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "target": [
+                ".project-art-link[href$=\"bd-blood-finder\"]"
+              ],
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 8
+        }
+      ],
+      "passedRules": 27
+    },
+    {
+      "theme": "light",
+      "route": "/lab",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 22
+    },
+    {
+      "theme": "light",
+      "route": "/journal",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 23
+    },
+    {
+      "theme": "light",
+      "route": "/work/ponnaloy",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/wanderlust",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 5
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/book-courier",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/metrobridge",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/bd-blood-finder",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    }
+  ],
+  "observations": [
+    {
+      "source": "Vite development preview; observational, no throttling",
+      "domNodes": 32,
+      "htmlCharacters": 3192,
+      "localTransferBytes": 474099,
+      "navigation": [
+        {
+          "domContentLoaded": 0,
+          "load": 0
+        }
+      ],
+      "localPaintObservations": {
+        "lcpMs": null,
+        "cumulativeLayoutShift": 0
+      },
+      "thirdPartyResources": []
+    }
+  ]
+}

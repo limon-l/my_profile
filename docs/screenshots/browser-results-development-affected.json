@@ -1,0 +1,233 @@
+{
+  "capturedAt": "2026-11-06T00:52:53.272Z",
+  "browser": "Chromium 156.0.8078.4 headless; local browser executable, no emulated throttling",
+  "baseURL": "http://127.0.0.1:5173",
+  "contactSafety": "All POST requests intercepted locally; no message delivered and no external account modified.",
+  "results": [
+    {
+      "name": "Five case studies: navigation, title, source links and architecture",
+      "status": "passed",
+      "durationMs": 10965
+    },
+    {
+      "name": "All local links resolve to a rendered route and fragment target",
+      "status": "passed",
+      "durationMs": 6594
+    },
+    {
+      "name": "Automated WCAG A/AA scans of all routes in dark and light themes",
+      "status": "passed",
+      "durationMs": 23790
+    },
+    {
+      "name": "No unhandled application runtime exceptions",
+      "status": "passed",
+      "durationMs": 1
+    }
+  ],
+  "errors": [],
+  "responsive": [],
+  "accessibility": [
+    {
+      "theme": "dark",
+      "route": "/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 8
+        }
+      ],
+      "passedRules": 28
+    },
+    {
+      "theme": "dark",
+      "route": "/lab",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 22
+    },
+    {
+      "theme": "dark",
+      "route": "/journal",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 23
+    },
+    {
+      "theme": "dark",
+      "route": "/work/ponnaloy",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/wanderlust",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 5
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/book-courier",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/metrobridge",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "dark",
+      "route": "/work/bd-blood-finder",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 8
+        }
+      ],
+      "passedRules": 28
+    },
+    {
+      "theme": "light",
+      "route": "/lab",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 22
+    },
+    {
+      "theme": "light",
+      "route": "/journal",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 1
+        }
+      ],
+      "passedRules": 23
+    },
+    {
+      "theme": "light",
+      "route": "/work/ponnaloy",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/wanderlust",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 5
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/book-courier",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/metrobridge",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    },
+    {
+      "theme": "light",
+      "route": "/work/bd-blood-finder",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 4
+        }
+      ],
+      "passedRules": 26
+    }
+  ],
+  "observations": []
+}
