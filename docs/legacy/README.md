@@ -1,0 +1,73 @@
+# Limon Roy Apu — Portfolio
+
+Professional portfolio built with React and Vite, showcasing skills, projects, and contact details.
+
+## Overview
+
+This project is a personal portfolio site with a modern UI, animation-rich sections, and a responsive layout. It includes:
+
+- Profile and contact information
+- Education and certifications
+- Skills with animated progress bars
+- Featured projects with modal details
+- Contact form (ready for backend integration)
+
+## Tech Stack
+
+- React 18
+- Vite 5
+- CSS (custom styles + animations)
+- Font Awesome (icons)
+- GSAP (animations)
+
+## Project Structure
+
+```
+my_profile/
+  ├── index.html
+  ├── index.original.html
+  ├── package.json
+  └── src/
+      ├── App.jsx
+      ├── main.jsx
+      └── index.css
+```
+
+## Getting Started
+
+Install dependencies:
+
+```powershell
+npm install
+```
+
+Run the development server:
+
+```powershell
+npm run dev
+```
+
+Build for production:
+
+```powershell
+npm run build
+```
+
+Preview the production build:
+
+```powershell
+npm run preview
+```
+
+## Customization
+
+- Update portfolio content in `src/App.jsx`
+- Adjust global styles and animations in `src/index.css`
+
+## Deployment
+
+This project can be deployed to any static hosting provider (e.g., Vercel, Netlify, or GitHub Pages).
+
+---
+
+© 2026 Limon Roy Apu

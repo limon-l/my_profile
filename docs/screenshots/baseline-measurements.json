@@ -1,0 +1,454 @@
+{
+  "captured": "2026-11-05",
+  "environment": "Chromium 1248 headless, local Vite dev; no throttling; observational only",
+  "results": [
+    {
+      "name": "desktop",
+      "metrics": {
+        "title": "Limon Roy Apu — Full Stack Developer Portfolio",
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "htmlBytes": 211610,
+        "domNodes": 1492,
+        "images": [
+          {
+            "src": "http://127.0.0.1:5173/hero.jpeg",
+            "loaded": true
+          },
+          {
+            "src": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fit=crop&w=800&q=80",
+            "loaded": false
+          },
+          {
+            "src": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?fit=crop&w=800&q=80",
+            "loaded": false
+          },
+          {
+            "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=800&q=80",
+            "loaded": false
+          },
+          {
+            "src": "https://store-images.s-microsoft.com/image/apps.51736.14336182876214510.1257f207-809b-4764-86fe-baa35696ced6.7ffe14ee-cd75-4273-b571-408cd44bd9d2",
+            "loaded": false
+          }
+        ],
+        "resourceBytes": 2225634,
+        "navigation": [
+          {
+            "domContentLoaded": 3325.5999999996275,
+            "load": 3329.5999999996275
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://127.0.0.1:5173/@vite/client",
+            "transferSize": 138083,
+            "duration": 60
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "transferSize": 0,
+            "duration": 3073.60000000149
+          },
+          {
+            "name": "https://cdn.tailwindcss.com/",
+            "transferSize": 0,
+            "duration": 3074.7000000011176
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap",
+            "transferSize": 0,
+            "duration": 3071.199999999255
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
+            "transferSize": 0,
+            "duration": 3073.800000000745
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+            "transferSize": 0,
+            "duration": 3074.0999999996275
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/main.jsx",
+            "transferSize": 2451,
+            "duration": 64.09999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/@react-refresh",
+            "transferSize": 117848,
+            "duration": 80.69999999925494
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+            "transferSize": 4321,
+            "duration": 28.800000000745058
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=7c0d43d6",
+            "transferSize": 37263,
+            "duration": 5.400000000372529
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react.js?v=7c0d43d6",
+            "transferSize": 455,
+            "duration": 4.599999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=7c0d43d6",
+            "transferSize": 1354,
+            "duration": 4.900000000372529
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/App.jsx",
+            "transferSize": 27760,
+            "duration": 7.900000000372529
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/index.css",
+            "transferSize": 94040,
+            "duration": 10.099999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-REFQX4J5.js?v=7c0d43d6",
+            "transferSize": 78256,
+            "duration": 5.199999999254942
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-373CG7ZK.js?v=7c0d43d6",
+            "transferSize": 928323,
+            "duration": 34.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/AnimatedBackground.jsx",
+            "transferSize": 9009,
+            "duration": 26.300000000745058
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/Navigation.jsx",
+            "transferSize": 37932,
+            "duration": 27.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/HeroSection.jsx",
+            "transferSize": 46780,
+            "duration": 30.09999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/AboutSection.jsx",
+            "transferSize": 40066,
+            "duration": 30.800000000745058
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ExperienceSection.jsx",
+            "transferSize": 21631,
+            "duration": 31.40000000037253
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/SkillsSection.jsx",
+            "transferSize": 66457,
+            "duration": 33
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ProjectsSection.jsx",
+            "transferSize": 54368,
+            "duration": 36
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/TestimonialsSection.jsx",
+            "transferSize": 29406,
+            "duration": 36.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/DeveloperTerminal.jsx",
+            "transferSize": 34395,
+            "duration": 37.09999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ContactSection.jsx",
+            "transferSize": 75289,
+            "duration": 39
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/Footer.jsx",
+            "transferSize": 19566,
+            "duration": 39.09999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ProjectModal.jsx",
+            "transferSize": 44671,
+            "duration": 39.29999999888241
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/CommandPalette.jsx",
+            "transferSize": 31492,
+            "duration": 40.29999999888241
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/data/data.js",
+            "transferSize": 145769,
+            "duration": 64.19999999925494
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/RoundedCarousel.jsx",
+            "transferSize": 12105,
+            "duration": 14
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ScrollReveal.jsx",
+            "transferSize": 7030,
+            "duration": 14.599999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/hero.jpeg",
+            "transferSize": 119214,
+            "duration": 5.700000001117587
+          },
+          {
+            "name": "http://127.0.0.1:5173/hero.jpeg",
+            "transferSize": 300,
+            "duration": 3.200000001117587
+          },
+          {
+            "name": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fit=crop&w=800&q=80",
+            "transferSize": 0,
+            "duration": 3096.7999999988824
+          },
+          {
+            "name": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?fit=crop&w=800&q=80",
+            "transferSize": 0,
+            "duration": 3096.9000000003725
+          },
+          {
+            "name": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=800&q=80",
+            "transferSize": 0,
+            "duration": 3097
+          },
+          {
+            "name": "https://store-images.s-microsoft.com/image/apps.51736.14336182876214510.1257f207-809b-4764-86fe-baa35696ced6.7ffe14ee-cd75-4273-b571-408cd44bd9d2",
+            "transferSize": 0,
+            "duration": 3171.60000000149
+          }
+        ]
+      },
+      "errors": [
+        "tailwind is not defined"
+      ]
+    },
+    {
+      "name": "mobile",
+      "metrics": {
+        "title": "Limon Roy Apu — Full Stack Developer Portfolio",
+        "viewport": 390,
+        "documentWidth": 390,
+        "htmlBytes": 211661,
+        "domNodes": 1492,
+        "images": [
+          {
+            "src": "http://127.0.0.1:5173/hero.jpeg",
+            "loaded": true
+          },
+          {
+            "src": "",
+            "loaded": false
+          },
+          {
+            "src": "",
+            "loaded": false
+          },
+          {
+            "src": "",
+            "loaded": false
+          },
+          {
+            "src": "",
+            "loaded": false
+          }
+        ],
+        "resourceBytes": 2225634,
+        "navigation": [
+          {
+            "domContentLoaded": 3256.800000000745,
+            "load": 3260.2000000011176
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://127.0.0.1:5173/@vite/client",
+            "transferSize": 138083,
+            "duration": 35.69999999925494
+          },
+          {
+            "name": "https://cdn.tailwindcss.com/",
+            "transferSize": 0,
+            "duration": 3054.7000000011176
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "transferSize": 0,
+            "duration": 3053.800000000745
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap",
+            "transferSize": 0,
+            "duration": 3053.5
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
+            "transferSize": 0,
+            "duration": 3054
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/main.jsx",
+            "transferSize": 2451,
+            "duration": 21.200000001117587
+          },
+          {
+            "name": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+            "transferSize": 0,
+            "duration": 3054
+          },
+          {
+            "name": "http://127.0.0.1:5173/@react-refresh",
+            "transferSize": 117848,
+            "duration": 23
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+            "transferSize": 4321,
+            "duration": 2.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=7c0d43d6",
+            "transferSize": 37263,
+            "duration": 3.099999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react.js?v=7c0d43d6",
+            "transferSize": 455,
+            "duration": 4.400000000372529
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=7c0d43d6",
+            "transferSize": 1354,
+            "duration": 4.699999999254942
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/App.jsx",
+            "transferSize": 27760,
+            "duration": 5.099999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/index.css",
+            "transferSize": 94040,
+            "duration": 7.400000000372529
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-REFQX4J5.js?v=7c0d43d6",
+            "transferSize": 78256,
+            "duration": 4.099999999627471
+          },
+          {
+            "name": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-373CG7ZK.js?v=7c0d43d6",
+            "transferSize": 928323,
+            "duration": 30.90000000037253
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/Navigation.jsx",
+            "transferSize": 37932,
+            "duration": 24.40000000037253
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/AnimatedBackground.jsx",
+            "transferSize": 9009,
+            "duration": 21.59999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/HeroSection.jsx",
+            "transferSize": 46780,
+            "duration": 27.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ExperienceSection.jsx",
+            "transferSize": 21631,
+            "duration": 29.09999999962747
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/AboutSection.jsx",
+            "transferSize": 40066,
+            "duration": 28.700000001117587
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/SkillsSection.jsx",
+            "transferSize": 66457,
+            "duration": 28.90000000037253
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/TestimonialsSection.jsx",
+            "transferSize": 29406,
+            "duration": 32
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ProjectsSection.jsx",
+            "transferSize": 54368,
+            "duration": 30.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/Footer.jsx",
+            "transferSize": 19566,
+            "duration": 33.5
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ContactSection.jsx",
+            "transferSize": 75289,
+            "duration": 33.19999999925494
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/DeveloperTerminal.jsx",
+            "transferSize": 34395,
+            "duration": 32.19999999925494
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ProjectModal.jsx",
+            "transferSize": 44671,
+            "duration": 33.80000000074506
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/CommandPalette.jsx",
+            "transferSize": 31492,
+            "duration": 34.30000000074506
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/data/data.js",
+            "transferSize": 145769,
+            "duration": 47.80000000074506
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/ScrollReveal.jsx",
+            "transferSize": 7030,
+            "duration": 5.300000000745058
+          },
+          {
+            "name": "http://127.0.0.1:5173/src/components/RoundedCarousel.jsx",
+            "transferSize": 12105,
+            "duration": 7.899999998509884
+          },
+          {
+            "name": "http://127.0.0.1:5173/hero.jpeg",
+            "transferSize": 119214,
+            "duration": 3.800000000745058
+          },
+          {
+            "name": "http://127.0.0.1:5173/hero.jpeg",
+            "transferSize": 300,
+            "duration": 3.299999998882413
+          }
+        ]
+      },
+      "errors": [
+        "tailwind is not defined"
+      ]
+    }
+  ]
+}
