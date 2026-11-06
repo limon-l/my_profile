@@ -16,6 +16,8 @@ node scripts/browser-qa.mjs
 
 Optional environment variables:
 
+Set `QA_STATIC_EXPORT=1` to include the production-only checks for raw metadata, complete no-JavaScript content, local favicon/social assets, and external core-resource requests.
+
 | Variable                | Purpose                                                                                                                                                                                               |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `QA_BASE_URL`           | Preview origin; defaults to `http://127.0.0.1:5173`. Set to a production-preview origin to exercise generated HTML and assets.                                                                        |
@@ -67,10 +69,50 @@ The complete pre-final-name-fix run is preserved in `screenshots/browser-results
 
 One development-performance observation coincided with a Vite hot reload and recorded an incomplete document. That observation is **invalid and excluded from performance claims**. The harness now measures a fresh settled navigation. Stable production-preview observations and full results are added when that preview is available.
 
+## Production-preview results
+
+The stable production build was served at `http://127.0.0.1:4173` and tested separately:
+
+```powershell
+$env:QA_BASE_URL = 'http://127.0.0.1:4173'
+$env:QA_OUTPUT_DIR = 'docs/screenshots/production'
+$env:QA_STATIC_EXPORT = '1'
+node scripts/browser-qa.mjs
+```
+
+The full production run passed **18 of 19** groups, including all interactive journeys, all local links, all 96 responsive combinations, and all 16 accessibility scans with zero violations. The additional raw-document/no-JavaScript check exposed a serving-path issue: extensionless routes received Vite's root fallback, while trailing-slash and explicit directory-index paths received the correct generated document. JavaScript had masked the incorrect raw response. The build was corrected to emit equivalent flat `.html` aliases alongside directory documents.
+
+The final focused rerun then passed **4 of 4** groups: Journal deep links/refresh, history/anchors/missing page, the complete static-export check, and runtime exceptions. The static-export check directly verified **all eight extensionless routes** with JavaScript disabled: correct raw title/canonical/OG/Twitter metadata, all five case studies with 13 sections each plus architecture/evidence, seven Lab interests, three Journal notes, and the homepage identity/project summaries. It also verified the generated 404 noindex page, local favicon/social-image HTTP 200 responses, **1200 × 630** social-image dimensions, and no external visual/script/font dependency. No tested failure remains after the affected checks were rerun.
+
+| Final production coverage | Actual result |
+| --- | --- |
+| Routes × themes × requested widths | **96/96** without horizontal document overflow |
+| WCAG A/AA automated route/theme scans | **16/16**, zero axe violations |
+| Interactive journeys and local link targets | All passed |
+| Raw metadata and full no-JavaScript content | All eight known routes passed |
+| Contact outcomes | Local mocks only; no real message sent |
+| Unhandled runtime exceptions | Zero |
+
+The full production report is `screenshots/production/browser-results-full.json`; the final affected report is `screenshots/production/browser-results.json`. Full-page and viewport-only desktop/mobile screenshots in both themes, Lab, case-study, and no-JavaScript case-study screenshots are in the same production directory.
+
+The settled production homepage navigation reported:
+
+| Local observation | Value |
+| --- | --- |
+| DOM elements | 1,220 |
+| Serialized document characters | 68,612 |
+| Reported local resource-transfer bytes | 198,739 |
+| DOMContentLoaded / load | 107.5 / 107.6 ms |
+| Local LCP candidate | 208 ms |
+| Observed maximum layout-shift session | 0 |
+| Third-party visual/script/font resources | None |
+
+This navigation followed screenshot visits in the same browser context, so caches were warm; no network/CPU throttling was applied. These are diagnostics of this local preview, not a cold-load benchmark or a performance guarantee. No field population or INP measurement was collected. The baseline used a development server and unavailable external resources, so its timings and transfer count are not directly comparable with these production-preview observations.
+
 ## Scope and limits
 
 Browser checks combine actual keyboard interaction, rendered geometry, screenshots and axe analysis. Automated checks cannot establish WCAG conformance. Screen-reader announcements have not been tested with a real assistive-technology session. Chromium is the only engine exercised here; real Safari/Firefox and physical mobile devices remain separate checks.
 
 The local LCP/layout-shift observers and development-resource measurements are observations from an unthrottled headless browser. They are **not** Lighthouse scores, field Core Web Vitals or an INP measurement. Baseline and final development observations include Vite transforms/HMR, so they should not be substituted for deployed production measurements.
 
-The local routing tests exercise Vite's SPA fallback. Static deployment entry documents and host routing must additionally pass production build/artifact checks. Formspree account ownership and real inbox delivery remain unverified because no message was sent.
+The generated extensionless entry documents and no-JavaScript content passed the local production preview checks. The remote host's behavior and crawler access still require a deployment-preview check. Formspree account ownership and real inbox delivery remain unverified because no message was sent.

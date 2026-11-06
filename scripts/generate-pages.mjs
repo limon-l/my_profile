@@ -194,7 +194,7 @@ export function renderRouteHtml(template, path, content = siteContent) {
   );
   return replaceRequired(
     html,
-    /<noscript\b[^>]*>[\s\S]*?<\/noscript>/i,
+    /<noscript\b[^>]*>[\s\S]*?<\/noscript\s*>/i,
     renderNoScript(path, content),
     "no-JavaScript fallback",
   );
@@ -251,6 +251,15 @@ export async function generatePages(options = {}) {
         : join(distDirectory, document.route.slice(1), "index.html");
     await mkdir(dirname(destination), { recursive: true });
     await writeFile(destination, document.html, "utf8");
+    // Flat aliases support extensionless HTML lookup in Vite preview and
+    // Vercel cleanUrls; directory entries also support conventional hosts.
+    if (document.route !== "/") {
+      await writeFile(
+        join(distDirectory, `${document.route.slice(1)}.html`),
+        document.html,
+        "utf8",
+      );
+    }
   }
   await writeFile(join(distDirectory, "404.html"), notFound, "utf8");
   await writeFile(

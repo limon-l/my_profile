@@ -359,6 +359,13 @@ test("packaging requires explicit assets and produces all deep links without cop
           ? join(distDirectory, "index.html")
           : join(distDirectory, path.slice(1), "index.html");
       const html = await readFile(destination, "utf8");
+      if (path !== "/") {
+        assert.equal(
+          await readFile(join(distDirectory, `${path.slice(1)}.html`), "utf8"),
+          html,
+          "Extensionless and directory routes must serve identical metadata and fallback text",
+        );
+      }
       assert.ok(
         html.includes(
           `<title>${escapeHtml(getRouteMetadata(path).title)}</title>`,
